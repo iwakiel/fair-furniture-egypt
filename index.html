@@ -566,6 +566,7 @@ tr.grand .n{color:#fff}
     <div class="tw"><table>
           <thead><tr><th>الاختيار</th><th>يبقى إيه بالظبط</th><th class="num">التكلفة التقريبية</th><th>رأيي</th></tr></thead>
           <tbody>
+            <tr><th>فلوتد مضلّع عسلي سيكوريت 6 مم</th><td>إزاز بضلوع طولية رأسي بلون عسلي، متقسّي. بيدّي نور ودفا وبيخبّي اللي جوه</td><td class="num"><span class="n">1,400–2,300</span> للمتر <span class="est">تقدير</span></td><td>شيك جداً ومودرن، وأغلى من المدخّن. الوش الأملس للأوضة عشان التنضيف، واطلبوا عينة للون</td></tr>
             <tr><th>إزاز سيكوريت 6 مم مدخّن أو برونز</th><td>إزاز مقسّى، لو اتكسر بيتفتت حبيبات صغيرة. في قطاع ألومنيوم من الأربع جهات</td><td class="num"><span class="n">850–1,300</span> للمتر <span class="est">تقدير</span></td><td>أحسن اختيار ليكم: آمن، شكله مودرن، ومابيبيّنش الهدوم</td></tr>
             <tr><th>سيكوريت فاميه أو ساندبلاست</th><td>مصنفر، بيدي نور ومابيبيّنش اللي جوه</td><td class="num"><span class="n">850–1,250</span> <span class="est">تقدير</span></td><td>كويس لو عايزين فاتح</td></tr>
             <tr><th>سيكوريت شفاف</th><td>مقسّى شفاف</td><td class="num"><span class="n">700–1,000</span></td><td>آمن بس بيبيّن كل حاجة جوه</td></tr>
@@ -764,6 +765,7 @@ var FFE = (function(){
     lab_p:  {n:'مصنعية قص ولصق وتجميع (ميلامين/HPL)', u:'لوح', p:[450,600,800], est:true, src:'تقدير'},
     inst:   {n:'تركيب', u:'أوضة', p:[800,1200,1800], est:true, src:'تقدير: فك وتركيب 400–600 للأوضة عند شركات النقل'},
     /* sliding wardrobe doors (v17) */
+    g_fluted_amber:{n:'إزاز فلوتد (مضلّع طولي) عسلي سيكوريت 6 مم', u:'م²', p:[1400,1800,2300], est:true, src:'تقدير: الفلوتد مستورد ومش في نشرات الأسعار؛ السيكوريت 6 مم 650–800 (الدستور 29 أبريل 2026) + فرق النقشة واللون'},
     g_sec_clear:{n:'إزاز سيكوريت 6 مم شفاف', u:'م²', p:[700,850,1000], src:'بانكير 7 يونيو 2026: السيكوريت 700–1,000 للمتر'},
     g_sec_tint: {n:'إزاز سيكوريت 6 مم مدخّن أو برونز', u:'م²', p:[850,1050,1300], est:true, src:'تقدير: الملون 600–800 + التقسية (بانكير يونيو 2026)'},
     g_sec_frost:{n:'إزاز سيكوريت 6 مم فاميه أو ساندبلاست', u:'م²', p:[850,1050,1250], est:true, src:'تقدير: سيكوريت + صنفرة'},
@@ -837,7 +839,7 @@ var FFE = (function(){
       choices:[
         {k:'shape', n:'شكل الدولاب', v:'i', o:[['i','مستقيم'],['l','حرف L']]},
         {k:'doors', n:'ضلف الدولاب', v:'hinge', o:[['hinge','خشب مفصلات'],['swood','خشب سحب (جرار)'],['sglass','إزاز سحب في قطاع ألومنيوم']]},
-        {k:'glass', n:'نوع الإزاز', v:'g_sec_tint', when:{doors:'sglass'}, o:[['g_sec_tint','سيكوريت 6 مم مدخّن أو برونز'],['g_sec_frost','سيكوريت 6 مم فاميه'],['g_sec_clear','سيكوريت 6 مم شفاف'],['g_lacobel','لاكوبيل ملوّن'],['g_mirror','مراية بفيلم أمان'],['g_film','إزاز عادي بفيلم أمان']]},
+        {k:'glass', n:'نوع الإزاز', v:'g_sec_tint', when:{doors:'sglass'}, o:[['g_fluted_amber','فلوتد مضلّع عسلي سيكوريت 6 مم'],['g_sec_tint','سيكوريت 6 مم مدخّن أو برونز'],['g_sec_frost','سيكوريت 6 مم فاميه'],['g_sec_clear','سيكوريت 6 مم شفاف'],['g_lacobel','لاكوبيل ملوّن'],['g_mirror','مراية بفيلم أمان'],['g_film','إزاز عادي بفيلم أمان']]},
         {k:'top', n:'وحدات خشب فوق الضلف', v:'0', o:[['0','لا، دولاب 240 من غير وحدات'],['1','وحدات 45 سم جوه الـ 240 (الضلف أقصر)'],['ceil','ضلف 240 عادية ووحدات فوقها لحد السقف']]},
         {k:'nsm', n:'الكومود', v:'wall', o:[['wall','معلق على الحيطة'],['floor','على الأرض']]},
         {k:'shoes', n:'جزم جوه الدولاب', v:'none', o:[['none','لا'],['heels','رف للكعب العالي بس'],['fixed2','جزامة: 2 رف مايل ثابت'],['pull2','جزامة: 2 رف مايل بمجرى سحب']]}],
@@ -858,6 +860,7 @@ var FFE = (function(){
         if(c.doors==='sglass') out.push('الضلف على الضلع الكبير: '+nd+' ضلف سحب، عرض الواحدة حوالي '+dW+' سم (بتغطي واجهة '+Math.round(fw*100)+' سم بعد الركنة) وارتفاعها '+H+' سم، في قطاع ألومنيوم ماسك الإزاز من الأربع جهات، '+(P[c.glass]?P[c.glass].n:'')+'، ومجرى ألومنيوم وعجل بيلي بإغلاق هادي، والماركة مكتوبة');
         else if(c.doors==='swood') out.push('الضلف على الضلع الكبير: '+nd+' ضلف خشب سحب، عرض الواحدة حوالي '+dW+' سم وارتفاعها '+H+' سم، بنفس خامة الواجهات، ومجرى ألومنيوم وعجل بيلي بإغلاق هادي، والماركة مكتوبة');
         else out.push('الضلف: خشب مفصلات ارتفاع '+H+' سم');
+        if(c.doors==='sglass' && c.glass==='g_fluted_amber') out.push('الإزاز فلوتد (Reeded) لونه عسلي/برونز فاتح، الضلوع رأسي بعرض حوالي 8–10 مم، متقسّي (سيكوريت) بعد النقشة، والوش الأملس ناحية الأوضة عشان التنضيف، وتتبعت عينة للون قبل التنفيذ');
         if(c.doors!=='hinge') out.push('الأدراج الداخلية راجعة لورا بحيث تتفتح والضلفة السحب قدامها'+(ceil?'':'، والمجرى العلوي متركب على عارضة خشب متينة'));
         if(L) out.push('الضلع الصغير والركنة: ضلفة خشب مفصلات أو رفوف مفتوحة، والركنة ليها وصول (ماتبقاش مقفولة)');
         if(top) out.push('وحدات خشب فوق الضلف ارتفاع 45 سم بضلف مفصلات أو بتفتح لفوق، بنفس خامة الواجهات');
@@ -1235,7 +1238,7 @@ function catOf(id){ for(var i=0;i<CAT.length;i++) if(CAT[i].r.indexOf(id)>-1) re
 
 /* ---------- state ---------- */
 var DEF={readyPick:{}, msgKind:'short', home:'obour', car:0, persons:2, dayVal:0, fab:250, cur:'master', tab:'start', needBy:'', toName:'', planNote:'',
-  rooms:{master:{on:1,preset:10,t:1,lv:1,dims:{w:2,w2:1,bed:160,dresser:1,ceil:3,ns:0.5,dw:1.0},custom:null,quote:0,ch:{shape:'l',doors:'sglass',glass:'g_sec_tint',top:'ceil',shoes:'none'}}, dressing:{on:0,preset:10,t:1,lv:1,dims:{},custom:null,quote:0},
+  rooms:{master:{on:1,preset:10,t:1,lv:1,dims:{w:2,w2:1,bed:160,dresser:1,ceil:3,ns:0.5,dw:1.0},custom:null,quote:0,ch:{shape:'l',doors:'sglass',glass:'g_fluted_amber',top:'ceil',shoes:'none'}}, dressing:{on:0,preset:10,t:1,lv:1,dims:{},custom:null,quote:0},
     dining:{on:1,preset:10,t:1,lv:1,dims:{chairs:6,len:180,buffet:1,bw:1.2},custom:null,quote:0}, antreh:{on:1,preset:3,t:1,lv:1,dims:{seats:8,sl:2.2,sd:0.8,aw:0.95},custom:null,quote:0},
     living:{on:1,preset:3,t:1,lv:1,dims:{seats:4,l1:2.4,l2:1.7,dp:0.9},custom:null,quote:0}, desk:{on:0,preset:10,t:1,lv:1,dims:{w:1.1,dp:0.55},custom:null,quote:0,ch:{place:'same',drawers:'1',shelves:'1'}}, kids:{on:0,preset:10,t:1,lv:1,dims:{},custom:null,quote:0},
     tv:{on:0,preset:10,t:1,lv:1,dims:{w:1.9},custom:null,quote:0}, shoecab:{on:0,preset:10,t:1,lv:1,dims:{w:0.8,h:1},custom:null,quote:0,ch:{style:'flip'}},
