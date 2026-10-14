@@ -7,41 +7,35 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="احسب السعر العادل لعفش الجواز في مصر: الخامات، هامش الورشة، المواصفة اللي تطلبها، ومنين تجيب.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: a calm Scandinavian showroom. White floor, light-grey display areas, black type in a heavy geometric
-   Kufi, prices set bold like shop tags. Deep blue is the only action colour; yellow is kept for the price tag that
-   says "fair". No textures, no frames: space and type do the work. */
+/* Layout: a quiet, expensive showroom. White floor, blush-grey display areas, ink type; one colour, burgundy,
+   carries every action and the price tag that says "fair", with a hairline of brass for detail. Display type is
+   Amiri, a classical Naskh, set large; the interface speaks in Noto Kufi and the text in Noto Sans.
+   A single light look on purpose, like a printed catalogue. */
 :root{
-  --bg:#ffffff; --paper:#ffffff; --ink:#111111; --muted:#5f6368; --line:#dfdfdf; --soft:#f5f5f5;
-  --beech:#1a4f93; --beech-soft:#e8f0fa; --teal:#1a4f93; --teal-soft:#e8f0fa;
-  --tag:#ffd319; --tag-ink:#111111;
-  --good:#1f7a3a; --good-soft:#e3f2e6; --warn:#8a5a00; --warn-soft:#fff3cf; --bad:#b3261e; --bad-soft:#fbe4e2;
-  --shadow:none;
-  --brand:"Noto Kufi Arabic","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
-  --display:"Noto Kufi Arabic","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  color-scheme:light;
+  --bg:#ffffff; --paper:#ffffff; --ink:#1d1517; --muted:#6c5f62; --line:#ebe3e1; --soft:#f8f4f3;
+  --wine:#6d1a2c; --wine-2:#8e2a40; --wine-soft:#f6e8eb; --brass:#b08d57;
+  --beech:#6d1a2c; --beech-soft:#f6e8eb; --teal:#6d1a2c; --teal-soft:#f6e8eb;
+  --tag:#6d1a2c; --tag-ink:#ffffff;
+  --good:#256b3b; --good-soft:#e5f2e8; --warn:#8a5a00; --warn-soft:#fbf0d6; --bad:#a3262b; --bad-soft:#fbe5e4;
+  --shadow:0 1px 2px rgba(29,21,23,.04),0 12px 32px -22px rgba(29,21,23,.35);
+  --brand:"Amiri","Noto Naskh Arabic","Times New Roman",serif;
+  --display:"Amiri","Noto Naskh Arabic","Times New Roman",serif;
+  --ui:"Noto Kufi Arabic","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
   --body:"Noto Sans Arabic","Segoe UI",Tahoma,Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --r:4px;
+  --r:6px;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#121212; --paper:#1b1b1b; --ink:#f2f2f2; --muted:#a8acb1; --line:#2e2e2e; --soft:#1b1b1b;
-  --beech:#7fb0ff; --beech-soft:#1a2a40; --teal:#7fb0ff; --teal-soft:#1a2a40;
-  --tag:#ffd319; --tag-ink:#111111;
-  --good:#8fd19e; --good-soft:#163020; --warn:#f0c76b; --warn-soft:#3a2f17; --bad:#f2a099; --bad-soft:#3d1f1c; color-scheme:dark } }
-:root[data-theme="dark"]{
-  --bg:#121212; --paper:#1b1b1b; --ink:#f2f2f2; --muted:#a8acb1; --line:#2e2e2e; --soft:#1b1b1b;
-  --beech:#7fb0ff; --beech-soft:#1a2a40; --teal:#7fb0ff; --teal-soft:#1a2a40;
-  --tag:#ffd319; --tag-ink:#111111;
-  --good:#8fd19e; --good-soft:#163020; --warn:#f0c76b; --warn-soft:#3a2f17; --bad:#f2a099; --bad-soft:#3d1f1c; color-scheme:dark }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{direction:rtl}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;direction:rtl}
 h1,h2,h3,h4,p,ul,ol,figure{margin:0}
-h1,h2{font-family:var(--display);font-weight:800;text-wrap:balance;letter-spacing:0}
-h2{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.25}
-h3{font-family:var(--display);font-size:1.15rem;font-weight:700;line-height:1.5;text-wrap:balance}
+h1,h2{font-family:var(--display);font-weight:700;text-wrap:balance;letter-spacing:0}
+h2{font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.3}
+h3{font-family:var(--ui);font-size:1.08rem;font-weight:700;line-height:1.55;text-wrap:balance}
 h4{font-size:1rem;font-weight:700}
 a{color:var(--ink);text-underline-offset:3px}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -51,32 +45,58 @@ button,input,select,textarea{font:inherit;color:inherit}
 .small{font-size:.88rem}
 
 /* masthead */
-.mast{background:var(--bg);border-bottom:1px solid var(--line);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 14px}
+.util{background:var(--wine);color:#f7e9ec;font-family:var(--ui);font-size:.76rem;padding-block:7px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.util .in{max-width:1180px;margin-inline:auto;display:flex;justify-content:space-between;gap:6px 18px;flex-wrap:wrap}
+.util b{font-family:var(--mono);font-weight:500;direction:ltr;unicode-bidi:isolate}
+.mast{background:var(--bg);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 10px}
 .mast .in{max-width:1180px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:10px 28px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;min-width:0}
-.mark{width:44px;height:44px;flex:none;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.mark{width:48px;height:48px;flex:none;border-radius:50%;background:var(--wine);color:#fff;display:grid;place-items:center;box-shadow:inset 0 0 0 3px var(--wine),inset 0 0 0 4px rgba(255,255,255,.35)}
 .mark svg{width:26px;height:26px}
-.brand h1{font-family:var(--brand);font-weight:800;font-size:clamp(1.5rem,4vw,1.9rem);line-height:1.2;color:var(--ink)}
-.brand .tag{font-size:.86rem;color:var(--muted);max-width:60ch}
+.brand h1{font-family:var(--brand);font-weight:700;font-size:clamp(1.9rem,4.6vw,2.4rem);line-height:1.1;color:var(--ink)}
+.brand .tag{font-size:.84rem;color:var(--muted);max-width:60ch}
 .mast .facts{display:flex;gap:8px;flex-wrap:wrap}
-.mast .facts div{display:flex;align-items:baseline;gap:6px;background:var(--soft);border-radius:999px;padding:5px 14px;font-size:.8rem;color:var(--muted)}
-.mast .facts b{font-family:var(--mono);font-weight:600;font-size:.9rem;color:var(--ink);direction:ltr;unicode-bidi:isolate}
-.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-.tabs .tl{max-width:1180px;margin-inline:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+.mast .facts div{display:flex;align-items:baseline;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-family:var(--ui);font-size:.76rem;color:var(--muted)}
+.mast .facts b{font-family:var(--mono);font-weight:600;font-size:.86rem;color:var(--wine);direction:ltr;unicode-bidi:isolate}
+/*tabs*/.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(8px);border-block:1px solid var(--line)}
+.tabs .tl{max-width:1180px;margin-inline:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
 .tabs .tl::-webkit-scrollbar{display:none}
-.tabs button{flex:none;background:transparent;border:0;color:var(--muted);padding:14px 12px 11px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:.92rem;border-bottom:3px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s}
+.tabs button{flex:none;background:transparent;border:0;color:var(--muted);padding:14px 13px 11px;cursor:pointer;font-family:var(--ui);font-weight:600;font-size:.88rem;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s}
 .tabs button:hover{color:var(--ink)}
-.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
-@media (max-width:640px){ .mast .facts{display:none} .brand .tag{font-size:.8rem} }
+.tabs button[aria-selected="true"]{color:var(--wine);border-bottom-color:var(--wine)}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:stretch}
+.hero .txt{display:flex;flex-direction:column;gap:14px;justify-content:center;padding-block:10px}
+.hero h2{font-size:clamp(2.2rem,5.2vw,3.6rem);line-height:1.25}
+.hero h2 em{font-style:normal;color:var(--wine)}
+.hero .art{position:relative;border-radius:14px;background:linear-gradient(160deg,var(--wine-soft),var(--soft) 70%);overflow:hidden;min-height:280px;display:grid;place-items:end center}
+.hero .art svg{width:100%;max-width:520px;height:auto;display:block}
+.hero .pricecard{position:absolute;top:18px;inset-inline-end:18px;background:var(--paper);border-radius:10px;box-shadow:var(--shadow);padding:12px 16px;display:flex;flex-direction:column;gap:2px;font-family:var(--ui);font-size:.76rem;color:var(--muted)}
+.hero .pricecard b{font-family:var(--mono);font-size:1.25rem;color:var(--wine);direction:ltr;unicode-bidi:isolate}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,128px),1fr));gap:14px}
+@media (max-width:640px){ .tiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px} .tile i{width:60px;height:60px} .tile i svg{width:32px;height:32px} .tile b{font-size:.78rem} }
+.tile{display:flex;flex-direction:column;align-items:center;gap:8px;background:transparent;border:0;cursor:pointer;padding:6px 4px;text-align:center;font-family:var(--ui)}
+.tile i{width:78px;height:78px;border-radius:50%;background:var(--soft);display:grid;place-items:center;transition:background .15s,transform .15s}
+.tile i svg{width:40px;height:40px;color:var(--wine)}
+.tile:hover i{background:var(--wine-soft);transform:translateY(-2px)}
+.tile b{font-size:.86rem;font-weight:600;line-height:1.35}
+.tile span{font-family:var(--mono);font-size:.78rem;color:var(--muted);direction:ltr;unicode-bidi:isolate}
+.ikea{border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px}
+.ikea .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.ikea ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;font-size:.88rem}
+.ikea li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-block:4px}
+.ikea li:last-child{border-bottom:0}
+@media (max-width:820px){ .hero{grid-template-columns:minmax(0,1fr)} .hero .art{min-height:220px} }
+@media (max-width:640px){ .mast .facts{display:none} .brand .tag{font-size:.78rem} .util .in{justify-content:center} .util .hide-sm{display:none} }
 
 .wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:34px 130px}
 .tab{display:flex;flex-direction:column;gap:36px;min-width:0}
 .sec{display:flex;flex-direction:column;gap:14px;min-width:0}
 .sec > header{display:flex;flex-direction:column;gap:6px}
 .lede{font-size:1.08rem;max-width:68ch}
-.eyebrow{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.03em}
+.eyebrow{font-family:var(--ui);font-size:.78rem;font-weight:600;color:var(--wine);letter-spacing:.04em}
 .note{font-size:.9rem;color:var(--muted);max-width:75ch}
-.panel{background:var(--soft);border:0;border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.panel{background:var(--soft);border:0;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px}
 .grid2 > *,.grid3 > *{min-width:0}
@@ -93,22 +113,22 @@ textarea{font-family:var(--body);line-height:1.7;resize:vertical}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .chk{display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600}
 .chk input{width:18px;height:18px;accent-color:var(--teal)}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:11px 22px;font-weight:700;cursor:pointer;text-decoration:none;transition:opacity .12s}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--wine);color:#fff;font-family:var(--ui);border:0;border-radius:999px;padding:11px 22px;font-weight:700;cursor:pointer;text-decoration:none;transition:opacity .12s}
 .btn:hover{opacity:.86}
-.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-.btn.ghost:hover{border-color:var(--ink);opacity:1}
+.btn.ghost{background:transparent;color:var(--wine);border:1.5px solid var(--wine)}
+.btn.ghost:hover{background:var(--wine-soft);opacity:1}
 .btn.sm{padding:5px 12px;font-size:.88rem}
 .btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.linkbtn{background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-weight:600}
+.linkbtn{background:none;border:0;padding:0;color:var(--wine);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-weight:600}
 
 /* summary tiles */
 .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0;border-block:1px solid var(--line)}
 .sum > div{display:flex;flex-direction:column;gap:2px;padding:14px 4px;border-inline-start:1px solid var(--line);padding-inline:14px}
 .sum > div:first-child{border-inline-start:0}
 .sum .k{font-size:.84rem;color:var(--muted);font-weight:600}
-.sum .v{font-size:1.7rem;font-weight:700;font-family:var(--display)}
+.sum .v{font-size:1.65rem;font-weight:600;font-family:var(--mono)}
 .sum .v .n{font-size:1em}
-.sum .v.beech{color:var(--ink)} .sum .v.teal{color:var(--tag-ink);background:var(--tag);align-self:flex-start;padding:0 10px;border-radius:2px}
+.sum .v.beech{color:var(--ink)} .sum .v.teal{color:var(--tag-ink);background:var(--tag);align-self:flex-start;padding:0 12px;border-radius:4px}
 .sum .v small{font-family:var(--body);font-size:.6em;margin-inline-start:4px}
 .sum .s{font-size:.8rem;color:var(--muted)}
 
@@ -124,7 +144,7 @@ textarea{font-family:var(--body);line-height:1.7;resize:vertical}
 .rlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);overflow:hidden}
 .ritem{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer}
 .ritem:last-child{border-bottom:0}
-.ritem[aria-current="true"]{background:var(--soft);box-shadow:inset -4px 0 0 var(--ink)}
+.ritem[aria-current="true"]{background:var(--wine-soft);box-shadow:inset -3px 0 0 var(--wine)}
 .ritem input{width:18px;height:18px;accent-color:var(--teal)}
 .ritem .nm{font-weight:700;line-height:1.35}
 .ritem .nm small{display:block;font-weight:400;font-size:.78rem;color:var(--muted)}
@@ -132,8 +152,8 @@ textarea{font-family:var(--body);line-height:1.7;resize:vertical}
 .ritem.off .nm{color:var(--muted)}
 .presets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}
 .pre{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px;text-align:start;cursor:pointer;display:flex;flex-direction:column;gap:4px;min-width:0}
-.pre:hover{border-color:var(--ink)}
-.pre[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);background:var(--paper)}
+.pre:hover{border-color:var(--wine)}
+.pre[aria-pressed="true"]{border-color:var(--wine);box-shadow:inset 0 0 0 1.5px var(--wine);background:var(--wine-soft)}
 .pre b{font-size:.98rem}
 .pre span{font-size:.82rem;color:var(--muted);line-height:1.55}
 .pre .row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
@@ -166,7 +186,7 @@ tr.tot td,tr.tot th{font-weight:700;border-top:1.5px solid var(--ink)}
 /* steps */
 .steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;counter-reset:s}
 .steps li{counter-increment:s;background:var(--soft);border:0;border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:6px}
-.steps li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--ink);line-height:1}
+.steps li::before{content:counter(s);font-family:var(--display);font-weight:700;font-size:2rem;color:var(--wine);line-height:1}
 .steps li b{font-size:1.02rem}
 .steps li span{font-size:.88rem;color:var(--muted)}
 
@@ -183,7 +203,7 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
 .dock{position:fixed;inset-inline:0;bottom:0;z-index:4;background:var(--bg);color:var(--ink);border-top:1px solid var(--line);box-shadow:0 -6px 20px -16px rgba(0,0,0,.35);padding-top:9px;padding-bottom:calc(9px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .dock .in{max-width:1180px;margin-inline:auto;display:flex;flex-wrap:wrap;gap:4px 22px;align-items:baseline;justify-content:space-between;font-size:.88rem}
 .dock b{font-family:var(--mono);font-weight:500;font-size:1.05rem}
-.dock b{color:var(--ink);font-weight:600} .dock .g{background:var(--tag);color:var(--tag-ink);padding:0 8px;border-radius:2px} .dock .w{color:var(--muted)}
+.dock b{color:var(--ink);font-weight:600} .dock .g{background:var(--tag);color:var(--tag-ink);padding:0 8px;border-radius:4px} .dock .w{color:var(--muted)}
 @media (max-width:760px){ .bench{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:640px){ .dock .in{font-size:.8rem;gap:0 12px;justify-content:space-around} .dock b{font-size:.92rem} }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
@@ -192,13 +212,14 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
 <body>
 
 
+<div class="util"><div class="in"><span>أسعار الخامات لغاية أكتوبر 2026، ومقارنة بأسعار IKEA مصر</span><span class="hide-sm">كل الأرقام بالجنيه، وأي رقم مكتوب جنبه «تقدير» قابل للتغيير</span></div></div>
 <header class="mast">
   <div class="in">
     <div class="brand">
       <span class="mark" aria-hidden="true"><svg viewBox="0 0 46 46"><path d="M23 7v31M11 38h24M8 14h30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M8 14l-5 11h10zM38 14l-5 11h10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></span>
       <div style="min-width:0">
         <h1>ميزان العفش</h1>
-        <p class="tag">التكلفة الحقيقية، وهامش الورشة، والسعر العادل لعفش الجواز في مصر.</p>
+        <p class="tag">التكلفة الحقيقية، وهامش الورشة، والسعر العادل لعفش الجواز في مصر، قصاد أسعار IKEA.</p>
       </div>
     </div>
     <div class="facts" aria-label="أرقام الميزان">
@@ -225,11 +246,21 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
 <!-- ========== START ========== -->
 <section class="tab" id="t-start">
   <div class="sec">
-    <header>
-      <p class="eyebrow">أسعار الخامات لغاية أكتوبر 2026</p>
-      <h2>اعرف السعر الحقيقي قبل ما تقعد مع أي ورشة</h2>
-      <p class="lede">الموقع بيحسب تكلفة كل أوضة من الخامات والمصنعية، ويقولك هامش الربح المعقول للورشة وللمعرض، ويطلعلك المواصفة اللي تبعتها لكل الورش عشان العروض تبقى على نفس الحاجة بالظبط. وبعدين يحسبلك: ورشة جنبك ولا دمياط، بعد حساب المواصلات والنقل.</p>
-    </header>
+    <div class="hero">
+      <div class="txt">
+        <p class="eyebrow">ميزان العفش · أسعار أكتوبر 2026</p>
+        <h2>اعرفوا <em>السعر العادل</em> قبل ما تقعدوا مع أي ورشة</h2>
+        <p class="lede">بنحسب تكلفة كل قطعة من الخامات والمصنعية، وهامش الربح المعقول للورشة وللمعرض، وبنقارنها بـ IKEA مصر. وبنطلّعلكم المواصفة والرسالة اللي تبعتوها، ونقولكم ورشة جنبكم ولا دمياط.</p>
+        <div class="btns"><button type="button" class="btn" data-go="rooms">ابدأوا بالأوض</button><button type="button" class="btn ghost" data-go="where">قارنوا مع IKEA</button></div>
+      </div>
+      <div class="art"><svg viewBox="0 0 520 300" aria-hidden="true"><g fill="none" stroke="#6d1a2c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M70 250V120"/><path d="M50 120h40l-8-40H58z" fill="#fff"/><path d="M60 250h20"/>
+<rect x="140" y="150" width="270" height="70" rx="16" fill="#fff"/><rect x="128" y="182" width="36" height="60" rx="12" fill="#fff"/><rect x="386" y="182" width="36" height="60" rx="12" fill="#fff"/>
+<path d="M164 220h222"/><path d="M275 152v68"/><path d="M168 242v14M382 242v14"/>
+<path d="M185 175q20-14 40 0" /><rect x="430" y="214" width="56" height="42" rx="4" fill="#fff"/><path d="M458 214v-30"/><path d="M445 184c0-22 26-22 26 0" fill="#f6e8eb"/>
+<path d="M30 256h470" stroke="#b08d57" stroke-width="1.4"/></g></svg><div class="pricecard"><span>سعر ورشة عادل للطلب</span><b id="heroFair">—</b></div></div>
+    </div>
+    <div class="tiles" id="tiles" aria-label="الأوض"></div>
     <div class="panel">
       <div class="grid3">
         <div class="field"><label for="home">ساكنين فين؟</label><select id="home"></select></div>
@@ -288,6 +319,7 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
           <div class="field" id="rFabWrap"><label for="fabPrice">سعر متر القماش</label><input id="fabPrice" type="number" min="0" step="10"></div>
         </div>
         <div class="verdict" id="rVerdict" role="status"></div>
+        <div class="ikea" id="rIkea"></div>
       </div>
     </div>
   </div>
@@ -307,6 +339,15 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
 
 <!-- ========== WHERE ========== -->
 <section class="tab" id="t-where" hidden>
+  <div class="sec" id="ikeaSec">
+    <header>
+      <p class="eyebrow">مقارنة بالأسعار</p>
+      <h2>IKEA ولا الورشة؟</h2>
+      <p class="lede">قصاد كل قطعة: سعر الورشة العادل بمواصفتكم، وأقرب حاجة في IKEA مصر بسعرها. القرار مكتوب في آخر كل سطر.</p>
+    </header>
+    <div class="tw"><table id="ikeaTable"></table></div>
+    <p class="note" id="ikeaNote"></p>
+  </div>
   <div class="sec">
     <header>
       <p class="eyebrow">القرار حسب مكانك</p>
@@ -989,6 +1030,27 @@ var FFE = (function(){
   var KINDIX = {case:0, dining:0, uph:1, kitchen:2};
 
 
+
+  /* ---------- IKEA Egypt for comparison (ikea.com/eg, 14 Oct 2026; sale prices can end; delivery and assembly extra) ---------- */
+  var IKEA_AT='ikea.com/eg، 14 أكتوبر 2026';
+  var IKEA = {
+    master:{items:[['دولاب PAX / TONSTAD 150 × 60 × 236 (ضلف مفصلات)',70700],['أو PAX / GRIMO بضلف سحب 150 × 43 × 236 (عرض خاص)',41600],['سرير MALM عالي 160 × 200 (من غير الملل والمرتبة)',11995],['2 كومود MALM بدرجين',11990],['تسريحة MALM 120 × 41',8995]], tot:[74580,103680],
+      v:'ws', why:'رقم IKEA أقل، بس ده لدولاب مستقيم 150 سم ارتفاعه 236 من غير وحدات لحد السقف. عشان يملا الحرف L كله لحد السقف محتاجين ركنة PAX ووحدات زيادة، فيطلع قريب من الورشة أو أغلى، وهو حبيبي وMDF بفويل مش جود وود وقشرة.'},
+    dining:{items:[['TONSTAD / TONSTAD ترابيزة 200 × 85 قشرة بلوط + 6 كراسي',52965],['أو DANDERYD / SKOGSTA 180 + 6 كراسي',62965],['بوفيه HEMNES 157 (مش متاح دلوقتي)',19995]], tot:[72960,82960],
+      v:'ws', why:'كراسي IKEA خشب صنوبر أو أكاسيا، والترابيزة قشرة. الورشة بتعمل زان سليم من غير فواصل وبوفيه 120 على مقاس الحيطة بسعر أقل.'},
+    antreh:{items:[['2 كنبة KIVIK 3 مقاعد',82990],['2 فوتيه EKTORP',32990],['أو أرخص: 2 GLOSTAD + 2 ÅRSUNDA',39980]], tot:[39980,115980],
+      v:'ws', why:'الطقم الرخيص في IKEA ضعيف، والكويس (KIVIK) ضعف سعر الورشة. KIVIK فيه سوست بوكت وكسوة بتتفك، وده نفس اللي في مواصفتكم.'},
+    living:{items:[['KIVIK كنبة ركنة 4 مقاعد',88490],['أو KIVIK 3 مقاعد بشيزلونج',76990]], tot:[76990,88490],
+      v:'ws', why:'KIVIK مريحة، بس سعرها حوالي 2.5 مرة سعر الورشة بنفس المواصفة، ومقاسها ثابت. اقعدوا عليها في المعرض كمرجع للراحة، وخلّوا الورشة تعمل زيها.'},
+    desk:{items:[['MICKE 105 × 50 بدرج',9995],['أو LAGKAPTEN / ALEX 140 × 60 بأدراج',15790]], tot:[9995,15790],
+      v:'ikea', why:'IKEA أرخص هنا. MICKE كفاية لو مش فارق معاكم إن المكتب يبقى بنفس خشب الليفنج وعلى نفس الحيطة بالظبط.'},
+    tv:{items:[['BESTÅ بضلف قشرة بلوط 180 × 42 × 38',21345],['أو BRIMNES 180 × 41',9495]], tot:[9495,21345],
+      v:'tie', why:'BESTÅ بالقشرة بنفس سعر الورشة تقريباً. الورشة بتديك 190 بالظبط وبنفس خشب باقي الليفنج، وBRIMNES أرخص بكتير بس فويل.'},
+    shoecab:{items:[['MACKAPÄR 80 × 35 × 102',8995],['أو BISSA 49 × 28 × 135 (3 قلّابات)',4995],['أو GULLABERG 88 × 30 × 122',9995]], tot:[4995,9995],
+      v:'ikea', why:'خدوها من IKEA. MACKAPÄR بنفس مقاس الدخلة تقريباً وأرخص، والجزامة مش محتاجة خشب طبيعي.'},
+    coffee:{items:[['ÖRTRÄSK 110 × 68 قشرة أرو أسود',9995],['أو VALNÄS 118 × 72 قشرة بلوط',14995],['2 ترابيزة جنب OLSERÖD',5990]], tot:[15985,20985],
+      v:'ikea', why:'IKEA أرخص شوية والشكل حلو، بس قشرة على لوح ورجول مش زان سليم. لو عايزين نفس خشب السفرة خلّوها من الورشة، غير كده IKEA اختيار كويس.'}
+  };
   /* ---------- the two workshop messages: a short first one, and the full spec ---------- */
   function sn(k){ return P[k] ? P[k].n.replace(/\s*\([^)]*\)/g,'') : ''; }
   var BRIEF = {
@@ -1041,7 +1103,7 @@ var FFE = (function(){
     L.push(''); L.push('هنكتب كل ده في العقد. شكراً.');
     return L.join('\n'); }
 
-  return {brief:brief, matShort:matShort, msgShort:msgShort, msgFull:msgFull, P:P, ROOMS:ROOMS, room:room, presets:presets, dimsOf:dimsOf, lines:lines, sum:sum, fabric:fabric, fair:fair, verdict:verdict, MARGIN:MARGIN,
+  return {IKEA:IKEA, IKEA_AT:IKEA_AT, brief:brief, matShort:matShort, msgShort:msgShort, msgFull:msgFull, P:P, ROOMS:ROOMS, room:room, presets:presets, dimsOf:dimsOf, lines:lines, sum:sum, fabric:fabric, fair:fair, verdict:verdict, MARGIN:MARGIN,
     specText:specText, CORES:CORES, SURF:SURF, PAINTS:PAINTS, EDGES:EDGES, BEECH:BEECH, GRADES:GRADES, GRADE_HW:GRADE_HW,
     choicesOf:choicesOf, HOMES:HOMES, SOURCES:SOURCES, homeOf:homeOf, srcOf:srcOf, km:km, trip:trip, ship:ship, KINDIX:KINDIX, pz:pz};
 })();
@@ -1319,12 +1381,40 @@ $('placeList').innerHTML=PLACES.map(function(p){ return '<div class="place"><div
   +'<div class="place"><p class="small"><b>شبرا الخيمة وعين شمس والمطرية:</b> فيهم ورش نجارة وتنجيد كتير، بس مالقيتش اسم واحد عليه تقييمات منشورة. استخدم طريقة الخريطة اللي تحت. <b>العبور والشروق وبدر:</b> مالقيتش ورشة مطابخ أو دريسنج ليها صفحة وتقييمات منشورة؛ ابحث على الخريطة.</p></div>';
 
 /* ---------- render ---------- */
+
+/* ---------- tiles, hero, IKEA ---------- */
+var ICON={master:'<path d="M6 30V16h28v14M6 24h28M10 16v-4h8v4M22 16v-4h8v4M6 30v3M34 30v3"/>',dressing:'<path d="M8 6h24v28H8zM20 6v28M16 19v3M24 19v3"/>',
+  dining:'<path d="M6 16h28M10 16v16M30 16v16M16 8v8M24 8v8M14 8h4M22 8h4"/>',antreh:'<path d="M6 20h28v8H6zM9 28v4M31 28v4M10 20v-6h20v6M6 20v-3M34 20v-3"/>',
+  living:'<path d="M5 18h20v10H5zM25 22h10v6H25zM8 28v3M32 28v3M7 18v-5h16v5"/>',desk:'<path d="M5 16h30M8 16v16M32 16v16M22 16v8h10M12 10h8v6"/>',
+  kids:'<path d="M8 26h24v4H8zM10 26v-8h20v8M14 10l6-4 6 4M20 6v4"/>',tv:'<path d="M7 8h26v16H7zM14 30h12M20 24v6"/>',
+  shoecab:'<path d="M10 6h20v28H10zM10 15h20M10 24h20M16 10h8M16 19h8M16 28h8"/>',coffee:'<path d="M5 18h30M9 18v12M31 18v12M14 12q6-6 12 0"/>',kitchen:'<path d="M6 14h28v18H6zM6 20h28M14 14V8h12v6M12 26h4M24 26h4"/>'};
+var IKV={ws:['good','الورشة أحسن'],ikea:['rec','IKEA أحسن'],tie:['plain','زي بعض']};
+function paintTiles(){
+  var h=E.ROOMS.filter(function(r){ return ['kitchen','kids','dressing'].indexOf(r.id)<0 || S.rooms[r.id].on; }).map(function(r){ var x=roomCost(r.id);
+    return '<button type="button" class="tile" data-tile="'+r.id+'"><i><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(ICON[r.id]||ICON.coffee)+'</svg></i><b>'+esc(r.n)+'</b><span>'+(S.rooms[r.id].on?k1(x.c*1.25):'—')+'</span></button>'; }).join('');
+  $('tiles').innerHTML=h;
+}
+document.addEventListener('click', function(e){ var t=e.target.closest('[data-tile]'); if(!t) return; S.cur=t.dataset.tile; S.rooms[S.cur].on=1; buildRoomPanel(); showTab('rooms'); render(); window.scrollTo({top:0}); });
+function ikeaRange(a){ return a[0]===a[1] ? N(n0(a[0])) : N(n0(a[0])+' – '+n0(a[1])); }
+function paintIkea(){
+  var r=E.room(S.cur), k=E.IKEA[r.id], box=$('rIkea');
+  if(!k){ box.hidden=true; return; } box.hidden=false; var v=IKV[k.v];
+  box.innerHTML='<div class="hd"><h3>قصاد IKEA مصر</h3><span class="pill '+v[0]+'">'+v[1]+'</span></div><ul>'+k.items.map(function(i){ return '<li><span>'+esc(i[0])+'</span><span class="n">'+n0(i[1])+'</span></li>'; }).join('')+'</ul><p class="small">'+esc(k.why)+'</p><p class="note">أسعار '+esc(E.IKEA_AT)+'. التوصيل والتركيب غير محسوبين، وبعض الأسعار عروض ممكن تخلص.</p>';
+}
+function paintIkeaTable(){
+  var rows='', sw=0, si=0;
+  E.ROOMS.forEach(function(r){ var k=E.IKEA[r.id]; if(!k || !S.rooms[r.id].on) return; var x=roomCost(r.id), f=E.fair(x.c), v=IKV[k.v];
+    rows+='<tr><th>'+esc(r.n)+'</th><td class="num">'+N(k1(f.ws[0])+' – '+k1(f.ws[1]))+(x.fab?'<br><span class="small muted">+ قماش '+n0(x.fab)+'</span>':'')+'</td><td class="num">'+ikeaRange(k.tot)+'</td><td><span class="pill '+v[0]+'">'+v[1]+'</span><br><span class="small muted">'+esc(k.why)+'</span></td></tr>'; });
+  $('ikeaTable').innerHTML='<thead><tr><th>القطعة</th><th class="num">ورشة عادل بمواصفتكم</th><th class="num">IKEA مصر</th><th>القرار</th></tr></thead><tbody>'+(rows||'<tr><td colspan="4">علّموا على الأوض الأول.</td></tr>')+'</tbody>';
+  $('ikeaNote').textContent='الخلاصة: الدواليب والسفرة والكنب من الورشة، لأنها على مقاسكم وبخامة أحسن وبسعر أقل أو قريب. المكتب والجزامة وترابيزات الصالون ينفع تاخدوهم من IKEA وتوفروا. وروحوا IKEA تقعدوا على KIVIK عشان تعرفوا الراحة اللي عايزينها من المنجّد. أسعار IKEA من '+E.IKEA_AT+'، والتوصيل والتركيب عليهم.';
+}
 function render(){
   $('home').value=S.home; $('home2').value=S.home; segPaint('carSeg'); segPaint('carSeg2');
   if(document.activeElement!==$('persons')) $('persons').value=S.persons; if(document.activeElement!==$('persons2')) $('persons2').value=S.persons;
   if(document.activeElement!==$('dayVal')) $('dayVal').value=S.dayVal;
   ['needBy','toName','planNote'].forEach(function(id){ if(document.activeElement!==$(id)) $(id).value=S[id]||''; });
-  var t=paintAll(); paintRoom(); var w=paintWhere(); paintAsk(); paintCompare();
+  var t=paintAll(); paintRoom(); paintIkea(); var w=paintWhere(); paintAsk(); paintCompare(); paintTiles(); paintIkeaTable();
+  $('heroFair').textContent=k1(t.c*1.2)+' – '+k1(t.c*1.3);
   $('startSum').innerHTML='<div><span class="k">التكلفة الحقيقية للطلب</span><span class="v">'+K(t.c)+'</span><span class="s">'+onRooms().length+' أوض، من غير ربح</span></div>'
     +'<div><span class="k">سعر ورشة عادل</span><span class="v teal">'+K(t.c*1.2,t.c*1.3)+'</span><span class="s">ده اللي تفاصل عليه</span></div>'
     +'<div><span class="k">سعر معرض معقول</span><span class="v beech">'+K(t.c*1.4,t.c*1.5)+'</span><span class="s">فوقه أنت بتدفع زيادة</span></div>'
