@@ -224,6 +224,26 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
 @media (max-width:760px){ .bench{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:640px){ .dock .in{font-size:.8rem;gap:0 12px;justify-content:space-around} .dock b{font-size:.92rem} }
 
+
+/* ready-made */
+.ready-band{border-radius:12px;background:var(--wine);color:#fff;padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 24px;align-items:center}
+.ready-band h3{color:#fff;font-size:1.15rem}
+.ready-band p{color:#f3dfe3;font-size:.9rem}
+.ready-band .big{font-family:var(--mono);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.ready-band .chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.ready-band .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;font-family:var(--ui);font-size:.78rem;color:#fff;cursor:pointer}
+.ready-band .chip:hover{background:rgba(255,255,255,.22)}
+.ready{border-radius:12px;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--wine);padding:18px;display:flex;flex-direction:column;gap:10px}
+.ready .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.ready .pick{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:end}
+.ready .pick .nm{font-family:var(--ui);font-weight:700}
+.ready .pick .pr{font-family:var(--mono);font-size:1.6rem;font-weight:600;color:var(--wine);direction:ltr;unicode-bidi:isolate}
+.ready .save{display:inline-block;background:var(--wine);color:#fff;border-radius:4px;padding:1px 10px;font-family:var(--ui);font-size:.82rem;font-weight:600}
+.store{display:inline-block;font-family:var(--ui);font-size:.72rem;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:0 9px;color:var(--ink);white-space:nowrap}
+.ready ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:3px;font-size:.86rem}
+.ready li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-block:4px}
+.ready li:last-child{border-bottom:0}
+@media (max-width:640px){ .ready-band{grid-template-columns:minmax(0,1fr)} .ready .pick{grid-template-columns:minmax(0,1fr)} }
 /* phones: every table becomes a stack of cards, each value labelled with its column */
 @media (max-width:640px){
   .tw{overflow:visible;border-top:0}
@@ -234,12 +254,12 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
   .tw tr.best{background:var(--good-soft)} .tw tr.tot{background:var(--wine-soft)}
   .tw th,.tw td{border:0;padding:0;text-align:start!important;white-space:normal!important;font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
   .tw tbody tr > :first-child{font-family:var(--ui);font-weight:700;font-size:.98rem;color:var(--ink);padding-bottom:4px;border-bottom:1px solid var(--line);margin-bottom:2px}
-  .tw td[data-label]:not(:first-child),.tw th[data-label]:not(:first-child){display:grid;grid-template-columns:minmax(0,38%) minmax(0,1fr);gap:10px;align-items:baseline}
-  .tw td[data-label]:not(:first-child)::before,.tw th[data-label]:not(:first-child)::before{content:attr(data-label);font-family:var(--ui);font-size:.74rem;font-weight:600;color:var(--muted)}
+  .tw td[data-label]:not(:first-child),.tw th[data-label]:not(:first-child){position:relative;padding-inline-start:38%!important;min-height:1.4em}
+  .tw td[data-label]:not(:first-child)::before,.tw th[data-label]:not(:first-child)::before{content:attr(data-label);position:absolute;inset-inline-start:0;top:.15em;width:35%;font-family:var(--ui);font-size:.74rem;font-weight:600;line-height:1.4;color:var(--muted)}
   .tw td:empty{display:none}
   .tw .n{white-space:normal}
   .tw td,.tw th{direction:rtl;unicode-bidi:normal}
-  .tw td .n,.tw th .n{display:inline-block;direction:ltr;unicode-bidi:isolate;justify-self:start}
+  .tw td .n,.tw th .n{display:inline-block;direction:ltr;unicode-bidi:isolate}
   ul.tight a,#srcLinks a,.note a{overflow-wrap:anywhere;word-break:break-word}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
@@ -306,6 +326,8 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
       <div class="sum" id="startSum"></div>
       <p class="note" id="startNote"></p>
     </div>
+    <div class="ready-band" id="startReady">
+    </div>
   </div>
   <div class="sec">
     <h3>الطريقة في أربع خطوات</h3>
@@ -355,6 +377,7 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
           <div class="field" id="rFabWrap"><label for="fabPrice">سعر متر القماش</label><input id="fabPrice" type="number" min="0" step="10"></div>
         </div>
         <div class="verdict" id="rVerdict" role="status"></div>
+        <div class="ready" id="rReady"></div>
         <div class="ikea" id="rIkea"></div>
       </div>
     </div>
@@ -378,8 +401,8 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
   <div class="sec" id="ikeaSec">
     <header>
       <p class="eyebrow">مقارنة بالأسعار</p>
-      <h2>IKEA ولا الورشة؟</h2>
-      <p class="lede">قصاد كل قطعة: سعر الورشة العادل بمواصفتكم، وأقرب حاجة في IKEA مصر بسعرها. القرار مكتوب في آخر كل سطر.</p>
+      <h2>تفصيل ولا جاهز؟</h2>
+      <p class="lede">قصاد كل قطعة: سعر الورشة العادل بمواصفتكم، وأحسن حاجة جاهزة لقيناها بخامة مكتوبة (Homzmart والمرشدي مارت وDeskmart)، وأقرب حاجة في IKEA مصر. القرار مكتوب في آخر كل سطر.</p>
     </header>
     <div class="tw"><table id="ikeaTable"></table></div>
     <p class="note" id="ikeaNote"></p>
@@ -1087,6 +1110,23 @@ var FFE = (function(){
     coffee:{items:[['ÖRTRÄSK 110 × 68 قشرة أرو أسود',9995],['أو VALNÄS 118 × 72 قشرة بلوط',14995],['2 ترابيزة جنب OLSERÖD',5990]], tot:[15985,20985],
       v:'ikea', why:'IKEA أرخص شوية والشكل حلو، بس قشرة على لوح ورجول مش زان سليم. لو عايزين نفس خشب السفرة خلّوها من الورشة، غير كده IKEA اختيار كويس.'}
   };
+
+  /* ---------- ready-made alternatives for the pieces that do not need a carpenter (14 Oct 2026; prices change daily) ---------- */
+  var READY_AT='Homzmart والمرشدي مارت وDeskmart وIKEA، 14 أكتوبر 2026';
+  var READY = {
+    tv:{pick:{s:'Homzmart',n:'وحدة تلفزيون MDF إسباني، سطح HPL ورجول ستيل',sz:'200 × 30 × 55',mat:'MDF إسباني + HPL، صناعة مصرية، ضمان سنة',p:7568,u:'https://homzmart.com/p/spanish-mdf-wood-tv-unit-brown-and-off-white-5520030-cm--MAGAR112444'},
+      alts:[['Homzmart','MDF إسباني أبيض 180 × 35 × 30 (تقييم 4.7 من 65)',6144],['Homzmart','ميلامين MDF بـ 3 ضلف 200 × 40 × 40',9910],['المرشدي مارت','خشب مصنّع 160 × 35 × 53',3700],['IKEA','BESTÅ بضلف قشرة 180',21345]],
+      why:'وحدة التلفزيون مش محتاجة نجار: MDF إسباني بسطح HPL بيستحمل، وبتوفّر حوالي تلتين السعر. الشاشة تتعلق على الحيطة.'},
+    shoecab:{pick:{s:'Homzmart',n:'جزامة MDF عرض 80',sz:'80 × 40 × 130',mat:'MDF',p:7971,u:'https://homzmart.com/en/c/storage-organization/entryway-storage/shoe-storage'},
+      alts:[['IKEA','MACKAPÄR 80 × 35 × 102 (قد الدخلة بالظبط)',8995],['المرشدي مارت','MDF بضلفتين 125 × 40 × 100 (أعرض من الدخلة)',6000],['IKEA','BISSA 3 قلّابات 49 × 28 × 135',4995]],
+      why:'جزامة جاهزة MDF أرخص وكفاية. قيسوا الدخلة الأول: لو 80 سم يبقى Homzmart 80 أو IKEA MACKAPÄR.'},
+    desk:{pick:{s:'Deskmart',n:'مكتب 120 × 60 × 75 + وحدة 3 أدراج بقفل',sz:'120 × 60 × 75',mat:'MDF بميلامين ضد الخدش وحرف PVC، ضمان سنتين',p:4487,u:'https://deskmart-officefurniture.com/product/%D9%85%D9%83%D8%AA%D8%A8-%D9%85%D9%82%D8%A7%D8%B3-120-60-75-%D8%B3%D9%85-%D8%B4%D8%A7%D9%85%D9%84-%D9%88%D8%AD%D8%AF%D8%A9-%D8%A7%D8%AF%D8%B1%D8%A7%D8%AC-3-%D8%AF%D8%B1%D8%AC/'},
+      alts:[['Homzmart','زان أحمر وميلامين ماليزي 120 × 60 (تقييم 4.5 من 99)',2293],['المرشدي مارت','خشب مصنّع 120 × 60 بدرجين وضلفة',2600],['IKEA','MICKE 105 × 50',9995]],
+      why:'المكتب الجاهز بأدراج بربع السعر تقريباً. اللي هيفوتكم: جنب الخشب اللي بيكمّل الكنبة والرفين، والرفين ممكن تجيبوهم جاهزين بأقل من ألف.'},
+    coffee:{pick:{s:'Homzmart',n:'ترابيزة وسط زان + 2 ترابيزة جنب زان',sz:'وسط 120 × 60 × 45، جنب 50 × 40 × 40',mat:'خشب زان (مكتوب في الصفحة)',p:11005,u:'https://homzmart.com/en/c/furniture/living-room-furniture/tables/wooden-coffee-tables'},
+      alts:[['المرشدي مارت + Homzmart','وسط MDF 120 × 60 (4,600) + 2 جنب MDF وزان (1,195 للواحدة)',6990],['IKEA','ÖRTRÄSK + 2 OLSERÖD',15985]],
+      why:'الترابيزات الجاهزة بالزان أرخص بحوالي النص. خلّوها من الورشة بس لو عايزينها بنفس خشب السفرة بالظبط.'}
+  };
   /* ---------- the two workshop messages: a short first one, and the full spec ---------- */
   function sn(k){ return P[k] ? P[k].n.replace(/\s*\([^)]*\)/g,'') : ''; }
   var BRIEF = {
@@ -1139,7 +1179,7 @@ var FFE = (function(){
     L.push(''); L.push('هنكتب كل ده في العقد. شكراً.');
     return L.join('\n'); }
 
-  return {IKEA:IKEA, IKEA_AT:IKEA_AT, brief:brief, matShort:matShort, msgShort:msgShort, msgFull:msgFull, P:P, ROOMS:ROOMS, room:room, presets:presets, dimsOf:dimsOf, lines:lines, sum:sum, fabric:fabric, fair:fair, verdict:verdict, MARGIN:MARGIN,
+  return {READY:READY, READY_AT:READY_AT, IKEA:IKEA, IKEA_AT:IKEA_AT, brief:brief, matShort:matShort, msgShort:msgShort, msgFull:msgFull, P:P, ROOMS:ROOMS, room:room, presets:presets, dimsOf:dimsOf, lines:lines, sum:sum, fabric:fabric, fair:fair, verdict:verdict, MARGIN:MARGIN,
     specText:specText, CORES:CORES, SURF:SURF, PAINTS:PAINTS, EDGES:EDGES, BEECH:BEECH, GRADES:GRADES, GRADE_HW:GRADE_HW,
     choicesOf:choicesOf, HOMES:HOMES, SOURCES:SOURCES, homeOf:homeOf, srcOf:srcOf, km:km, trip:trip, ship:ship, KINDIX:KINDIX, pz:pz};
 })();
@@ -1449,13 +1489,33 @@ function paintIkea(){
   box.innerHTML='<div class="hd"><h3>قصاد IKEA مصر</h3><span class="pill '+v[0]+'">'+v[1]+'</span></div><ul>'+k.items.map(function(i){ return '<li><span>'+esc(i[0])+'</span><span class="n">'+n0(i[1])+'</span></li>'; }).join('')+'</ul><p class="small">'+esc(k.why)+'</p><p class="note">أسعار '+esc(E.IKEA_AT)+'. التوصيل والتركيب غير محسوبين، وبعض الأسعار عروض ممكن تخلص.</p>';
 }
 function paintIkeaTable(){
-  var rows='', sw=0, si=0;
-  E.ROOMS.forEach(function(r){ var k=E.IKEA[r.id]; if(!k || !S.rooms[r.id].on) return; var x=roomCost(r.id), f=E.fair(x.c), v=IKV[k.v];
-    rows+='<tr><th>'+esc(r.n)+'</th><td class="num">'+N(k1(f.ws[0])+' – '+k1(f.ws[1]))+(x.fab?'<br><span class="small muted">+ قماش '+n0(x.fab)+'</span>':'')+'</td><td class="num">'+ikeaRange(k.tot)+'</td><td><span class="pill '+v[0]+'">'+v[1]+'</span><br><span class="small muted">'+esc(k.why)+'</span></td></tr>'; });
-  $('ikeaTable').innerHTML='<thead><tr><th>القطعة</th><th class="num">ورشة عادل بمواصفتكم</th><th class="num">IKEA مصر</th><th>القرار</th></tr></thead><tbody>'+(rows||'<tr><td colspan="4">علّموا على الأوض الأول.</td></tr>')+'</tbody>';
-  $('ikeaNote').textContent='الخلاصة: الدواليب والسفرة والكنب من الورشة، لأنها على مقاسكم وبخامة أحسن وبسعر أقل أو قريب. المكتب والجزامة وترابيزات الصالون ينفع تاخدوهم من IKEA وتوفروا. وروحوا IKEA تقعدوا على KIVIK عشان تعرفوا الراحة اللي عايزينها من المنجّد. أسعار IKEA من '+E.IKEA_AT+'، والتوصيل والتركيب عليهم.';
+  var rows='';
+  E.ROOMS.forEach(function(r){ var k=E.IKEA[r.id], R=E.READY[r.id]; if(!(k||R) || !S.rooms[r.id].on) return; var x=roomCost(r.id), f=E.fair(x.c), v=k?IKV[k.v]:null;
+    var dec = R ? '<span class="pill rec">جاهز من '+esc(R.pick.s)+'</span><br><span class="small muted">'+esc(R.why)+'</span>' : '<span class="pill '+v[0]+'">'+v[1]+'</span><br><span class="small muted">'+esc(k.why)+'</span>';
+    rows+='<tr><th>'+esc(r.n)+'</th><td class="num">'+N(k1(f.ws[0])+' – '+k1(f.ws[1]))+(x.fab?'<br><span class="small muted">+ قماش '+n0(x.fab)+'</span>':'')+'</td>'
+      +'<td class="num">'+(R?N(n0(R.pick.p))+'<br><span class="small muted">'+esc(R.pick.s)+'</span>':'—')+'</td>'
+      +'<td class="num">'+(k?ikeaRange(k.tot):'—')+'</td><td>'+dec+'</td></tr>'; });
+  var RS=readySaving();
+  $('ikeaTable').innerHTML='<thead><tr><th>القطعة</th><th class="num">ورشة عادل بمواصفتكم</th><th class="num">أحسن جاهز</th><th class="num">IKEA مصر</th><th>القرار</th></tr></thead><tbody>'+(rows||'<tr><td colspan="5">علّموا على الأوض الأول.</td></tr>')+'</tbody>';
+  $('ikeaNote').textContent='الخلاصة: الدولاب والسفرة والكنب من الورشة، لأنها على مقاسكم وبخامة أحسن وبسعر أقل أو قريب. وحدة التلفزيون والجزامة والمكتب وترابيزات الصالون جاهزين، وده بيوفّر حوالي '+k1(RS.tot)+'. وروحوا IKEA تقعدوا على KIVIK عشان تعرفوا الراحة اللي عايزينها من المنجّد. الأسعار من '+E.READY_AT+'، وممكن تتغير.';
 }
 
+
+function readySaving(){ var tot=0, items=[]; Object.keys(E.READY).forEach(function(id){ if(!S.rooms[id] || !S.rooms[id].on) return; var fm=roomCost(id).c*1.25, p=E.READY[id].pick.p; if(fm>p){ tot+=fm-p; items.push({id:id, save:fm-p}); } }); return {tot:tot, items:items}; }
+function paintReady(){
+  var r=E.room(S.cur), k=E.READY[r.id], box=$('rReady');
+  if(!k){ box.hidden=true; return; } box.hidden=false; var fm=roomCost(r.id).c*1.25, pk=k.pick, sv=fm-pk.p;
+  box.innerHTML='<div class="hd"><h3>جاهز ويوفّر</h3>'+(sv>0?'<span class="save">توفّروا حوالي '+k1(sv)+'</span>':'')+'</div>'
+    +'<div class="pick"><div><span class="store">'+esc(pk.s)+'</span> <span class="nm">'+esc(pk.n)+'</span><br><span class="small muted">المقاس '+esc(pk.sz)+' سم · '+esc(pk.mat)+'</span></div><div class="pr">'+n0(pk.p)+'</div></div>'
+    +'<p class="small"><a href="'+esc(pk.u)+'" target="_blank" rel="noopener">شوفوها على '+esc(pk.s)+'</a></p>'
+    +'<ul>'+k.alts.map(function(a){ return '<li><span><span class="store">'+esc(a[0])+'</span> '+esc(a[1])+'</span><span class="n">'+n0(a[2])+'</span></li>'; }).join('')+'</ul>'
+    +'<p class="small">'+esc(k.why)+'</p><p class="note">'+esc(E.READY_AT)+'. الأسعار بتتغير كل يوم، والتوصيل مجاني في أغلب Homzmart.</p>';
+}
+function paintStartReady(){ var R=readySaving(), el=$('startReady'); if(!el) return;
+  if(!(R.tot>0)){ el.hidden=true; return; } el.hidden=false;
+  el.innerHTML='<div><h3>مش كل حاجة محتاجة نجار</h3><p>'+R.items.length+' قطع تتجاب جاهزة بخامة كويسة: '+R.items.map(function(x){ return E.room(x.id).n; }).join('، ')+'.</p></div><div class="big">−'+k1(R.tot)+'</div>'
+    +'<div class="chips">'+R.items.map(function(x){ var pk=E.READY[x.id].pick; return '<button type="button" class="chip" data-tile="'+x.id+'">'+esc(E.room(x.id).n)+': '+esc(pk.s)+' '+n0(pk.p)+'</button>'; }).join('')+'</div>';
+}
 /* label every table cell with its column header, so the phone layout can show it */
 function labelTables(root){ (root||document).querySelectorAll('.tw table').forEach(function(t){ var hs=t.querySelectorAll('thead th'); if(!hs.length) return;
   var names=[].map.call(hs,function(h){ return h.textContent.trim(); });
@@ -1466,7 +1526,7 @@ function render(){
   if(document.activeElement!==$('persons')) $('persons').value=S.persons; if(document.activeElement!==$('persons2')) $('persons2').value=S.persons;
   if(document.activeElement!==$('dayVal')) $('dayVal').value=S.dayVal;
   ['needBy','toName','planNote'].forEach(function(id){ if(document.activeElement!==$(id)) $(id).value=S[id]||''; });
-  var t=paintAll(); paintRoom(); paintIkea(); var w=paintWhere(); paintAsk(); paintCompare(); paintTiles(); paintIkeaTable();
+  var t=paintAll(); paintRoom(); paintReady(); paintIkea(); paintStartReady(); var w=paintWhere(); paintAsk(); paintCompare(); paintTiles(); paintIkeaTable();
   $('heroFair').textContent=k1(t.c*1.2)+' – '+k1(t.c*1.3);
   $('startSum').innerHTML='<div><span class="k">التكلفة الحقيقية للطلب</span><span class="v">'+K(t.c)+'</span><span class="s">'+onRooms().length+' أوض، من غير ربح</span></div>'
     +'<div><span class="k">سعر ورشة عادل</span><span class="v teal">'+K(t.c*1.2,t.c*1.3)+'</span><span class="s">ده اللي تفاصل عليه</span></div>'
