@@ -223,6 +223,25 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
 .dock b{color:var(--ink);font-weight:600} .dock .g{background:var(--tag);color:var(--tag-ink);padding:0 8px;border-radius:4px} .dock .w{color:var(--muted)}
 @media (max-width:760px){ .bench{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:640px){ .dock .in{font-size:.8rem;gap:0 12px;justify-content:space-around} .dock b{font-size:.92rem} }
+
+/* phones: every table becomes a stack of cards, each value labelled with its column */
+@media (max-width:640px){
+  .tw{overflow:visible;border-top:0}
+  .tw table,.tw thead,.tw tbody,.tw tr,.tw th,.tw td{display:block;width:100%}
+  .tw thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tw tbody{display:flex;flex-direction:column;gap:10px}
+  .tw tr{background:var(--soft);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+  .tw tr.best{background:var(--good-soft)} .tw tr.tot{background:var(--wine-soft)}
+  .tw th,.tw td{border:0;padding:0;text-align:start!important;white-space:normal!important;font-size:.9rem;line-height:1.6;overflow-wrap:anywhere}
+  .tw tbody tr > :first-child{font-family:var(--ui);font-weight:700;font-size:.98rem;color:var(--ink);padding-bottom:4px;border-bottom:1px solid var(--line);margin-bottom:2px}
+  .tw td[data-label]:not(:first-child),.tw th[data-label]:not(:first-child){display:grid;grid-template-columns:minmax(0,38%) minmax(0,1fr);gap:10px;align-items:baseline}
+  .tw td[data-label]:not(:first-child)::before,.tw th[data-label]:not(:first-child)::before{content:attr(data-label);font-family:var(--ui);font-size:.74rem;font-weight:600;color:var(--muted)}
+  .tw td:empty{display:none}
+  .tw .n{white-space:normal}
+  .tw td,.tw th{direction:rtl;unicode-bidi:normal}
+  .tw td .n,.tw th .n{display:inline-block;direction:ltr;unicode-bidi:isolate;justify-self:start}
+  ul.tight a,#srcLinks a,.note a{overflow-wrap:anywhere;word-break:break-word}
+}
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 </style>
 </head>
@@ -1436,6 +1455,12 @@ function paintIkeaTable(){
   $('ikeaTable').innerHTML='<thead><tr><th>القطعة</th><th class="num">ورشة عادل بمواصفتكم</th><th class="num">IKEA مصر</th><th>القرار</th></tr></thead><tbody>'+(rows||'<tr><td colspan="4">علّموا على الأوض الأول.</td></tr>')+'</tbody>';
   $('ikeaNote').textContent='الخلاصة: الدواليب والسفرة والكنب من الورشة، لأنها على مقاسكم وبخامة أحسن وبسعر أقل أو قريب. المكتب والجزامة وترابيزات الصالون ينفع تاخدوهم من IKEA وتوفروا. وروحوا IKEA تقعدوا على KIVIK عشان تعرفوا الراحة اللي عايزينها من المنجّد. أسعار IKEA من '+E.IKEA_AT+'، والتوصيل والتركيب عليهم.';
 }
+
+/* label every table cell with its column header, so the phone layout can show it */
+function labelTables(root){ (root||document).querySelectorAll('.tw table').forEach(function(t){ var hs=t.querySelectorAll('thead th'); if(!hs.length) return;
+  var names=[].map.call(hs,function(h){ return h.textContent.trim(); });
+  t.querySelectorAll('tbody tr').forEach(function(tr){ var i=0; [].forEach.call(tr.children,function(c){ var sp=+c.getAttribute('colspan')||1; if(names[i] && !c.hasAttribute('data-label')) c.setAttribute('data-label',names[i]); i+=sp; }); }); }); }
+(function(){ var pend=false; try{ new MutationObserver(function(){ if(pend) return; pend=true; requestAnimationFrame(function(){ pend=false; labelTables(); }); }).observe(document.querySelector('main')||document.body,{childList:true,subtree:true}); }catch(e){} labelTables(); })();
 function render(){
   $('home').value=S.home; $('home2').value=S.home; segPaint('carSeg'); segPaint('carSeg2');
   if(document.activeElement!==$('persons')) $('persons').value=S.persons; if(document.activeElement!==$('persons2')) $('persons2').value=S.persons;
