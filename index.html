@@ -4,68 +4,84 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ميزان العفش</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="احسب السعر العادل لعفش الجواز في مصر: الخامات، هامش الورشة، المواصفة اللي تطلبها، ومنين تجيب.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Reem+Kufi:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: a carpenter's cut-sheet. One working bench (tabs) under a plain masthead; figures sit in mono like
-   measurements on a board; the beech accent marks wood, the green marks "fair", the clay marks "too much". */
+/* Layout: a joiner's bench. A walnut masthead with a dovetail edge and a brass rule in centimetres sits over a
+   stone-grey workshop floor with a faint grain; work happens on pale veneer panels. Brass marks wood and
+   measurement, walnut marks actions, green says "fair", amber "dear", clay "too much". */
 :root{
-  --bg:#eef0ec; --paper:#fbfcfa; --ink:#1d2725; --muted:#5b6662; --line:#cfd5d0; --soft:#e3e7e2;
-  --beech:#a8562f; --beech-soft:#f3e2d6; --teal:#14675c; --teal-soft:#d8ebe6;
-  --good:#2f6b33; --good-soft:#dcecd8; --warn:#8a5a00; --warn-soft:#f6e8c8; --bad:#a3302b; --bad-soft:#f5dcd9;
-  --display:"Lalezar","IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --bg:#e7e3db; --paper:#fbfaf7; --ink:#241b15; --muted:#695d52; --line:#d7d0c5; --soft:#efebe4;
+  --beech:#94661c; --beech-soft:#f1e5cb; --teal:#5b3622; --teal-soft:#f0e3d8;
+  --good:#2e6a3a; --good-soft:#dcebd9; --warn:#8a5a00; --warn-soft:#f6e8c8; --bad:#a3302b; --bad-soft:#f5dcd9;
+  --walnut:#2b1b11; --walnut-2:#45291a; --brass:#cf9f4f; --on-walnut:#f4eadc; --on-walnut-2:#d9c6ae;
+  --shadow:0 1px 0 rgba(43,27,17,.06),0 8px 24px -18px rgba(43,27,17,.45);
+  --brand:"Aref Ruqaa","Amiri","Traditional Arabic",serif;
+  --display:"Reem Kufi","IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
   --body:"IBM Plex Sans Arabic","Noto Sans Arabic","Segoe UI",Tahoma,Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  --r:8px;
+  --r:10px;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#121816; --paper:#1a2220; --ink:#e6ebe8; --muted:#9ca8a3; --line:#2f3a37; --soft:#232d2a;
-  --beech:#e39a6f; --beech-soft:#3a2a20; --teal:#6cc3b3; --teal-soft:#183a35;
-  --good:#93cf8a; --good-soft:#1e3420; --warn:#e8bf62; --warn-soft:#3a2f17; --bad:#f19a90; --bad-soft:#41211f; color-scheme:dark } }
+  --bg:#15100c; --paper:#1f1813; --ink:#efe6da; --muted:#b2a392; --line:#3a2e25; --soft:#28201a;
+  --beech:#dcae5e; --beech-soft:#3a2c17; --teal:#e3b78d; --teal-soft:#3a291c;
+  --good:#93cf8a; --good-soft:#1e3420; --warn:#e8bf62; --warn-soft:#3a2f17; --bad:#f19a90; --bad-soft:#41211f;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 10px 26px -18px rgba(0,0,0,.8); color-scheme:dark } }
 :root[data-theme="dark"]{
-  --bg:#121816; --paper:#1a2220; --ink:#e6ebe8; --muted:#9ca8a3; --line:#2f3a37; --soft:#232d2a;
-  --beech:#e39a6f; --beech-soft:#3a2a20; --teal:#6cc3b3; --teal-soft:#183a35;
-  --good:#93cf8a; --good-soft:#1e3420; --warn:#e8bf62; --warn-soft:#3a2f17; --bad:#f19a90; --bad-soft:#41211f; color-scheme:dark }
+  --bg:#15100c; --paper:#1f1813; --ink:#efe6da; --muted:#b2a392; --line:#3a2e25; --soft:#28201a;
+  --beech:#dcae5e; --beech-soft:#3a2c17; --teal:#e3b78d; --teal-soft:#3a291c;
+  --good:#93cf8a; --good-soft:#1e3420; --warn:#e8bf62; --warn-soft:#3a2f17; --bad:#f19a90; --bad-soft:#41211f;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 10px 26px -18px rgba(0,0,0,.8); color-scheme:dark }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{direction:rtl}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;direction:rtl}
+body{margin:0;background-color:var(--bg);background-image:var(--grain,none);background-size:640px 640px;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;direction:rtl}
 h1,h2,h3,h4,p,ul,ol,figure{margin:0}
-h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;letter-spacing:0}
+h1,h2{font-family:var(--display);font-weight:600;text-wrap:balance;letter-spacing:0}
 h2{font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.3}
-h3{font-size:1.12rem;font-weight:700;line-height:1.5;text-wrap:balance}
+h3{font-family:var(--display);font-size:1.18rem;font-weight:600;line-height:1.5;text-wrap:balance}
 h4{font-size:1rem;font-weight:700}
 a{color:var(--teal);text-underline-offset:3px}
 button,input,select,textarea{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:2px solid var(--beech);outline-offset:2px;border-radius:4px}
 .n{font-family:var(--mono);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;white-space:nowrap;font-size:.94em}
 .muted{color:var(--muted)}
 .small{font-size:.88rem}
 
-/* masthead */
-.mast{background:var(--ink);color:var(--paper);padding-inline:clamp(16px,4vw,40px);padding-block:22px 0}
-.mast .in{max-width:1120px;margin-inline:auto;display:flex;flex-direction:column;gap:14px}
-.brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.brand h1{font-size:clamp(2rem,6vw,3.1rem);line-height:1.1;color:var(--paper)}
-.brand .tag{font-size:.95rem;opacity:.8;max-width:52ch}
-.scale{width:46px;height:46px;flex:none}
-.ruler{height:14px;background:repeating-linear-gradient(to left,var(--beech) 0 1px,transparent 1px 10px),repeating-linear-gradient(to left,var(--beech) 0 2px,transparent 2px 50px);background-size:100% 6px,100% 12px;background-repeat:no-repeat;background-position:bottom,bottom;opacity:.9}
-.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ink);border-bottom:3px solid var(--beech)}
-.tabs .tl{max-width:1120px;margin-inline:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-inline:clamp(8px,3vw,32px)}
+/* masthead: walnut panel, the same in both themes */
+.mast{position:relative;background-color:var(--walnut);background-image:var(--walnut-grain,linear-gradient(100deg,var(--walnut) 0%,var(--walnut-2) 40%,var(--walnut) 70%,var(--walnut-2) 100%));background-size:cover;color:var(--on-walnut);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:34px 0;overflow:hidden}
+.mast::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 85% 0%,rgba(255,226,180,.10),transparent 60%),linear-gradient(to bottom,transparent 60%,rgba(0,0,0,.25));pointer-events:none}
+.mast .in{position:relative;z-index:1;max-width:1120px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 28px;align-items:end}
+.brand{display:flex;align-items:center;gap:16px;flex-wrap:wrap;min-width:0}
+.brand h1{font-family:var(--brand);font-weight:700;font-size:clamp(2.5rem,7.5vw,4.2rem);line-height:1.05;color:var(--on-walnut);text-shadow:0 1px 0 rgba(0,0,0,.4)}
+.brand .tag{font-size:1rem;color:var(--on-walnut-2);max-width:54ch;margin-top:6px}
+.scale{width:58px;height:58px;flex:none;color:var(--brass)}
+.mast .facts{display:flex;gap:22px;flex-wrap:wrap;color:var(--on-walnut-2);font-size:.85rem;padding-bottom:6px}
+.mast .facts b{display:block;font-family:var(--mono);font-weight:500;font-size:1.15rem;color:var(--brass);direction:ltr;text-align:right}
+.ruler{grid-column:1/-1;position:relative;height:30px;margin-top:8px;border-top:1px solid rgba(207,159,79,.55);background:
+  repeating-linear-gradient(to left,var(--brass) 0 1px,transparent 1px 8px) bottom/100% 7px no-repeat,
+  repeating-linear-gradient(to left,var(--brass) 0 1px,transparent 1px 40px) bottom/100% 13px no-repeat,
+  repeating-linear-gradient(to left,var(--brass) 0 2px,transparent 2px 80px) bottom/100% 20px no-repeat;opacity:.85}
+.dovetail{height:16px;background-color:var(--walnut);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16'%3E%3Cpath d='M8 0h14l4 16H4z' fill='%23d6b48a'/%3E%3Cpath d='M8 0h14l4 16H4z' fill='none' stroke='%23000' stroke-opacity='.18'/%3E%3C/svg%3E");background-size:48px 16px;background-repeat:repeat-x;box-shadow:inset 0 -2px 0 rgba(0,0,0,.25)}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--walnut);box-shadow:0 6px 18px -12px rgba(0,0,0,.6)}
+.tabs .tl{max-width:1120px;margin-inline:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
 .tabs .tl::-webkit-scrollbar{display:none}
-.tabs button{flex:none;background:transparent;border:0;color:var(--paper);opacity:.72;padding:11px 12px 9px;cursor:pointer;font-weight:600;font-size:.95rem;border-bottom:3px solid transparent;margin-bottom:-3px;white-space:nowrap}
-.tabs button:hover{opacity:1}
-.tabs button[aria-selected="true"]{opacity:1;border-bottom-color:var(--paper)}
+.tabs button{flex:none;background:transparent;border:0;color:var(--on-walnut-2);padding:12px 13px 10px;cursor:pointer;font-family:var(--display);font-weight:500;font-size:.98rem;border-bottom:3px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s}
+.tabs button:hover{color:var(--on-walnut)}
+.tabs button[aria-selected="true"]{color:var(--on-walnut);border-bottom-color:var(--brass)}
+@media (max-width:640px){ .mast{padding-block:22px 0} .mast .in{grid-template-columns:minmax(0,1fr);gap:10px} .mast .facts{gap:14px;font-size:.78rem} .mast .facts b{font-size:1rem} .scale{width:44px;height:44px} .dock .in{font-size:.8rem;gap:0 12px;justify-content:space-around} .dock b{font-size:.92rem} }
 
-.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px);padding-block:30px 120px}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:34px 130px}
 .tab{display:flex;flex-direction:column;gap:36px;min-width:0}
 .sec{display:flex;flex-direction:column;gap:14px;min-width:0}
 .sec > header{display:flex;flex-direction:column;gap:6px}
 .lede{font-size:1.08rem;max-width:68ch}
-.eyebrow{font-size:.82rem;font-weight:700;color:var(--beech);letter-spacing:.02em}
+.eyebrow{font-size:.82rem;font-weight:700;color:var(--beech);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--beech)}
 .note{font-size:.9rem;color:var(--muted);max-width:75ch}
-.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px}
 .grid2 > *,.grid3 > *{min-width:0}
@@ -82,7 +98,8 @@ textarea{font-family:var(--body);line-height:1.7;resize:vertical}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .chk{display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600}
 .chk input{width:18px;height:18px;accent-color:var(--teal)}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--paper);border:0;border-radius:999px;padding:9px 18px;font-weight:700;cursor:pointer;text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--paper);border:0;border-radius:999px;padding:9px 18px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.btn:hover{box-shadow:0 6px 16px -10px var(--teal);transform:translateY(-1px)}
 .btn.ghost{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
 .btn.sm{padding:5px 12px;font-size:.88rem}
 .btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
@@ -108,7 +125,7 @@ textarea{font-family:var(--body);line-height:1.7;resize:vertical}
 
 /* rooms bench */
 .bench{display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:20px;align-items:start}
-.rlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);overflow:hidden}
+.rlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);box-shadow:var(--shadow);overflow:hidden}
 .ritem{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer}
 .ritem:last-child{border-bottom:0}
 .ritem[aria-current="true"]{background:var(--teal-soft)}
@@ -153,7 +170,7 @@ tr.tot td,tr.tot th{font-weight:700;border-top:1.5px solid var(--ink)}
 /* steps */
 .steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;counter-reset:s}
 .steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
-.steps li::before{content:counter(s);font-family:var(--display);font-size:1.6rem;color:var(--beech);line-height:1}
+.steps li::before{content:counter(s);font-family:var(--mono);font-size:1.4rem;color:var(--beech);line-height:1}
 .steps li b{font-size:1.02rem}
 .steps li span{font-size:.88rem;color:var(--muted)}
 
@@ -167,10 +184,10 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
 .place{display:flex;flex-direction:column;gap:4px;padding-block:12px;border-bottom:1px solid var(--line)}
 .place .hd{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
 .toast{position:fixed;inset-inline:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));margin-inline:auto;width:max-content;max-width:90vw;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:999px;font-weight:600;z-index:9}
-.dock{position:fixed;inset-inline:0;bottom:0;z-index:4;background:var(--paper);border-top:2px solid var(--ink);padding:8px clamp(16px,4vw,40px) calc(8px + env(safe-area-inset-bottom,0px))}
+.dock{position:fixed;inset-inline:0;bottom:0;z-index:4;background:var(--walnut);color:var(--on-walnut);border-top:2px solid var(--brass);padding-top:9px;padding-bottom:calc(9px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .dock .in{max-width:1120px;margin-inline:auto;display:flex;flex-wrap:wrap;gap:4px 22px;align-items:baseline;justify-content:space-between;font-size:.88rem}
 .dock b{font-family:var(--mono);font-weight:500;font-size:1.05rem}
-.dock .g{color:var(--good)} .dock .w{color:var(--warn)}
+.dock b{color:var(--brass)} .dock .g{color:#a9dca0} .dock .w{color:#f0c76b}
 @media (max-width:760px){ .bench{grid-template-columns:minmax(0,1fr)} }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 </style>
@@ -182,14 +199,35 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
   <div class="in">
     <div class="brand">
       <svg class="scale" viewBox="0 0 46 46" aria-hidden="true"><path d="M23 6v32M10 38h26M8 14h30" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 14l-5 11h10zM38 14l-5 11h10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3 25a5 3 0 0 0 10 0M33 25a5 3 0 0 0 10 0" fill="currentColor"/><circle cx="23" cy="6" r="2.5" fill="currentColor"/></svg>
-      <div>
+      <div style="min-width:0">
         <h1>ميزان العفش</h1>
         <p class="tag">العفش ده بيتكلف كام فعلاً؟ الورشة بتكسب كام؟ والسعر المفروض يبقى كام؟ لكل اللي بيجهز بيته في مصر.</p>
       </div>
     </div>
+    <div class="facts" aria-label="أرقام الميزان">
+      <div><b>18 mm</b>سمك الألواح</div>
+      <div><b>×1.20–1.30</b>هامش الورشة العادل</div>
+      <div><b>8–10%</b>رطوبة الزان المجفف</div>
+    </div>
     <div class="ruler" aria-hidden="true"></div>
   </div>
 </header>
+<div class="dovetail" aria-hidden="true"></div>
+<script>
+/* wood grain drawn once on a canvas: walnut for the masthead, a faint grain for the page */
+(function(){ try{
+  function grain(w,h,base,lines,alpha,seed){ var c=document.createElement('canvas'); c.width=w; c.height=h; var x=c.getContext('2d'); if(!x) return null;
+    var r=seed; function rnd(){ r=(r*9301+49297)%233280; return r/233280; }
+    if(base){ x.fillStyle=base; x.fillRect(0,0,w,h); }
+    for(var i=0;i<lines;i++){ var y0=rnd()*h, amp=4+rnd()*18, f=0.002+rnd()*0.006, ph=rnd()*6.28, lw=0.4+rnd()*1.6;
+      x.beginPath(); for(var px=0;px<=w;px+=6){ var y=y0+Math.sin(px*f+ph)*amp+Math.sin(px*f*3.1+ph*2)*amp*0.25; if(px===0) x.moveTo(px,y); else x.lineTo(px,y); }
+      x.strokeStyle='rgba('+(rnd()<0.5?'20,10,4':'120,78,44')+','+(alpha*(0.4+rnd()))+')'; x.lineWidth=lw; x.stroke(); }
+    return c.toDataURL('image/png'); }
+  var root=document.documentElement, wal=grain(1400,420,'#2e1d12',150,0.55,7), pg=grain(640,640,null,90,0.05,11);
+  if(wal) root.style.setProperty('--walnut-grain','url('+wal+')');
+  if(pg) root.style.setProperty('--grain','url('+pg+')');
+}catch(e){} })();
+</script>
 <nav class="tabs" aria-label="أقسام الموقع"><div class="tl" role="tablist" id="tabs">
   <button role="tab" data-t="start" aria-selected="true">ابدأ هنا</button>
   <button role="tab" data-t="rooms" aria-selected="false">الأوض والأسعار</button>
@@ -225,7 +263,7 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
   <div class="sec">
     <h3>الطريقة في أربع خطوات</h3>
     <ol class="steps">
-      <li><b>اختار الأوض والمواصفة</b><span>من «الأوض والأسعار»: علّم على اللي محتاجينه، واختار الخامة. «أحسن قيمة» هو اللي أنصح بيه.</span></li>
+      <li><b>اختار الأوض والمواصفة</b><span>من «الأوض والأسعار»: علّم على اللي محتاجينه، واختار الخامة. «المواصفة المثالية لكل قطعة» هي اللي أنصح بيها، و«راحة زي IKEA» للكنب.</span></li>
       <li><b>ابعت نفس المواصفة لكل الورش</b><span>من «المواصفة والرسالة»: انسخ الرسالة وابعتها واتساب لتلات أو أربع أماكن على الأقل.</span></li>
       <li><b>حط العروض وقارن</b><span>من «قارن العروض»: كل عرض يتقارن بالتكلفة الحقيقية وبالمواصلات والنقل والوقت.</span></li>
       <li><b>اكتب العقد وعاين على الأبيض</b><span>من «العقد والمعاينة»: دفع على مراحل، ومعاينة الخشب قبل الدهان والتنجيد.</span></li>
@@ -372,6 +410,15 @@ ul.tight{padding-inline-start:1.2em;display:flex;flex-direction:column;gap:6px}
   <div class="sec">
     <header><p class="eyebrow">دليل الخامات</p><h2>إيه لازم يبقى إيه</h2>
       <p class="lede">القاعدة: الزان للأجزاء اللي بتشيل حمل وبتتهز، والألواح للمسطحات. القشرة الطبيعية في اللي بيتشاف، والميلامين في اللي جوه. والدهان: بولي يوريثان للشكل الطبيعي، وأستر بس لو عايزين لمعة الكلاسيك.</p></header>
+  </div>
+  <div class="sec">
+    <h3>المواصفة المثالية لكل قطعة</h3>
+    <p class="note">ده الاختيار «المواصفة المثالية لكل قطعة» في الحاسبة، ومعاه «راحة زي IKEA» للكنب. كل قطعة بالخامة اللي بتعيش في مكانها، من غير ما تدفع في حاجة مالهاش لازمة.</p>
+    <div class="tw"><table>
+      <thead><tr><th>القطعة</th><th>المواصفة</th><th>ملاحظة</th></tr></thead>
+      <tbody><tr><th>الدولاب والوحدات</th><td>كونتر جود وود 18 مم: ميلامين مستورد من جوه، وقشرة طبيعية وبولي يوريثان وقواشيط زان من بره، ضهر أبلكاش 8 مم في مجرى وعوارض تعليق</td><td>مفصلات Blum Clip Top BLUMOTION، مجاري Samet فتح كامل، مسكات مخفية</td></tr><tr><th>السرير</th><td>جنبين وكمر زان سليم 2.5 × 10 سم، ملل خشب مقوّس على شاسيه زان، ورجلين في النص</td><td>الضهر بنفس خامة الواجهات</td></tr><tr><th>الكومود</th><td>معلق بعارضة فرنساوي في حيطة طوب، درج واحد، سطحه قد المرتبة (55 سم)</td><td>ضهره 18 مم</td></tr><tr><th>ترابيزة السفرة</th><td>قرصة جود وود دوبل 36 مم بقشرة وبولي يوريثان 2K وحرف زان 4 سم؛ رجول وكمر زان سليم مجفف من غير فواصل، نقر ولسان</td><td>2K بيستحمل الحرارة والمية</td></tr><tr><th>كراسي السفرة</th><td>زان سليم مجفف عود واحد من غير فواصل (فنجر)، نقر ولسان بغرا وزوايا تقوية، قعدة أبلكاش 12 مم وإسفنج 35</td><td>قماش مقاوم للبقع أو جلد صناعي</td></tr><tr><th>الانتريه والليفنج</th><td>هيكل زان في الكمر والرجول والدراعات وأبلكاش 18 مم بدل الموسكي؛ قعدة سوست بوكت + إسفنج HR كثافة 35 + فايبر؛ ضهر إسفنج 25 وفايبر ومخدات سايبة</td><td>كسوة بتتفك بسوستة. الليفنج قعدة أعمق (60 سم) للراحة، والانتريه 55</td></tr><tr><th>ترابيزات الصالون</th><td>قرصة دوبل بقشرة وبولي يوريثان 2K (أو سيراميك/رخام صناعي) وحرف زان، ورجول زان سليم من غير فواصل</td><td>لباد تحت الرجول</td></tr><tr><th>المكتب</th><td>قرصة دوبل 36 مم بولي يوريثان 2K وحرف زان، وحدة أدراج على مجرى فتح كامل</td><td>فتحة أسلاك وجراب كابلات</td></tr><tr><th>وحدة التلفزيون</th><td>ستاندرد جود وود، معلقة 20 سم أو على قاعدة، وفتحات تهوية ورا الأجهزة</td><td>الشاشة على الحيطة</td></tr><tr><th>جزامة المدخل</th><td>من جوه ميلامين بيتمسح، مرفوعة 10 سم على رجول، وتهوية في الضهر</td><td>قلّابات بمكانيزم متين</td></tr><tr><th>أوضة الأطفال</th><td>ميلامين مستورد على MDF بحروف PVC مدورة، ضهر 8 مم، والدولاب متثبت في الحيطة</td><td>من غير زوايا حادة</td></tr><tr><th>المطبخ</th><td>علب MDF أخضر مقاوم للرطوبة بميلامين، وضلف HPL</td><td>الرخامة والأجهزة لوحدهم</td></tr></tbody></table></div>
+  </div>
+  <div class="sec">
     <h3>كل جزء في العفش: الخامة الصح</h3>
     <div class="tw"><table>
       <thead><tr><th>الجزء</th><th>الخامة الصح</th><th>يكفي / ينفع توفّر فيه</th><th>ليه</th></tr></thead>
@@ -584,28 +631,34 @@ var FFE = (function(){
     s_vena: {n:'قشرة صناعي', u:'لوح', p:[500,700,900], est:true, src:'تقدير'},
     s_none: {n:'من غير كسوة (للدوكو)', u:'لوح', p:[0,0,0], src:''},
     /* paint, material and labour, per m² of painted surface */
-    pu:     {n:'بولي يوريثان شفاف (مط أو نص لمعة)', u:'م²', p:[300,450,650], src:'KAYDC أغسطس 2026: 1,000–2,500 للضلفة'},
-    ester:  {n:'أستر (بوليستر) لامع', u:'م²', p:[250,400,550], src:'KAYDC: 300–1,800 للضلفة'},
-    nitro:  {n:'نيترو (سيلر ولاكيه)', u:'م²', p:[150,250,400], src:'KAYDC: لاكيه 500–2,000 للضلفة'},
-    duco:   {n:'دوكو بولي يوريثان (لون سادة)', u:'م²', p:[450,650,900], est:true, src:'تقدير: PU + معجنة وتنعيم'},
+    pu:     {n:'بولي يوريثان شفاف (مط أو نص لمعة)', u:'م²', p:[220,300,420], est:true, src:'تكلفة الورشة: خامة + صنايعي عندها، مش سعر النقاش من بره (KAYDC للنقاش من بره: 1,000–2,500 للضلفة)'},
+    ester:  {n:'أستر (بوليستر) لامع', u:'م²', p:[200,270,380], est:true, src:'تكلفة الورشة: خامة + صنايعي عندها، مش سعر النقاش من بره'},
+    nitro:  {n:'نيترو (سيلر ولاكيه)', u:'م²', p:[120,180,260], est:true, src:'تكلفة الورشة: خامة + صنايعي عندها، مش سعر النقاش من بره'},
+    duco:   {n:'دوكو بولي يوريثان (لون سادة)', u:'م²', p:[320,450,650], est:true, src:'تقدير: PU + معجنة وتنعيم'},
     /* edges, per sheet */
     e_lip:  {n:'قواشيط زان (سدابة زان على الحرف)', u:'لوح', p:[300,380,480], est:true, src:'0.005 م³ زان + مصنعية'},
     e_pvc:  {n:'شريط PVC 2 مم', u:'لوح', p:[100,150,200], est:true, src:'تقدير'},
     e_vt:   {n:'شريط قشرة', u:'لوح', p:[50,80,110], est:true, src:'تقدير'},
     back3:  {n:'ضهر HDF 3 مم', u:'لوح', p:[300,330,360], src:'NST يونيو 2026'},
     back4:  {n:'ضهر أبلكاش 4 مم', u:'لوح', p:[380,410,450], src:'NST يونيو 2026'},
+    back8p: {n:'ضهر أبلكاش 8 مم', u:'لوح', p:[550,650,800], est:true, src:'تقدير: الأبلكاش 3 مم 215–250 والسميك لحد 800 (المحل أكتوبر 2026)'},
+    back8m: {n:'ضهر MDF 8 مم', u:'لوح', p:[480,520,600], src:'NST يونيو 2026: MDF 8 مم حوالي 520'},
     /* hardware by grade: local/Chinese, Turkish, Blum/Hettich */
-    hinge:  {n:'مفصلة هيدروليك', u:'قطعة', p:[60,180,450], est:true, src:'صيني 29–120 (كنبكم)؛ Blum تقدير'},
-    slide:  {n:'مجرى درج (جوز)', u:'جوز', p:[300,900,2500], est:true, src:'تقدير: صيني / تركي / Blum'},
-    handle: {n:'مقبض', u:'قطعة', p:[60,150,400], est:true, src:'تقدير'},
+    hinge:  {n:'مفصلة هيدروليك', u:'قطعة', p:[50,120,380], est:true, src:'صيني 29–120 (كنبكم)؛ تركي Samet وBlum Clip Top تقدير'},
+    slide:  {n:'مجرى درج (جوز)', u:'جوز', p:[250,550,1800], est:true, src:'تقدير: صيني / تركي Samet فتح كامل / Blum Tandem'},
+    handle: {n:'مقبض', u:'قطعة', p:[40,100,300], est:true, src:'تقدير'},
+    h_hidden:{n:'مسكة مخفية (قطاع ألومنيوم جولا أو شطفة مفرّزة في الحرف)', u:'ضلفة/درج', p:[60,100,160], est:true, src:'تقدير: القطاع بالمتر + التفريز'},
+    pocket: {n:'سوست بوكت (Pocket springs) للقعدة', u:'مقعد', p:[500,800,1200], est:true, src:'تقدير: وحدة السوست البوكت بالمقعد'},
+    ply18:  {n:'أبلكاش 18 مم للهيكل والحشو', u:'لوح', p:[1300,1600,2000], est:true, src:'تقدير'},
+    hang:   {n:'عارضة تعليق وكوابيل مخفية (French cleat)', u:'قطعة', p:[150,250,400], est:true, src:'تقدير'},
     /* upholstery, per seat */
-    foam:   {n:'إسفنج القعدة والضهر', u:'مقعد', p:[700,1000,1400], est:true, src:'تقدير: كثافة 25 / 30 / 35'},
+    foam:   {n:'إسفنج القعدة والضهر', u:'مقعد', p:[600,850,1200], est:true, src:'تقدير: كثافة 25 / 30 / 35'},
     fill:   {n:'فايبر وسوست وبطانة', u:'مقعد', p:[400,600,900], est:true, src:'الفايبر 300 للكيلو'},
     uphl:   {n:'مصنعية المنجّد', u:'مقعد', p:[400,650,900], est:true, src:'الريحام: تنجيد انتريه 3+2+1 من 5,000 لـ 7,000'},
     fabric: {n:'قماش تنجيد', u:'متر', p:[120,250,450], src:'Fabrics Egypt أغسطس 2026: جاكار 60–120، كتان 150–250، قطيفة 120–550'},
     /* labour */
-    lab_w:  {n:'مصنعية نجارة (طبيعي/قشرة)', u:'لوح', p:[900,1200,1600], est:true, src:'KAYDC: 200–600 للمتر المسطح'},
-    lab_p:  {n:'مصنعية قص ولصق وتجميع (ميلامين/HPL)', u:'لوح', p:[600,850,1100], est:true, src:'تقدير'},
+    lab_w:  {n:'مصنعية نجارة (طبيعي/قشرة)', u:'لوح', p:[650,850,1150], est:true, src:'تقدير لأجر صنايعية الورشة؛ KAYDC للصنايعي من بره 200–500 للمتر المسطح'},
+    lab_p:  {n:'مصنعية قص ولصق وتجميع (ميلامين/HPL)', u:'لوح', p:[450,600,800], est:true, src:'تقدير'},
     inst:   {n:'تركيب', u:'أوضة', p:[800,1200,1800], est:true, src:'تقدير: فك وتركيب 400–600 للأوضة عند شركات النقل'},
     /* sliding wardrobe doors (v17) */
     g_sec_clear:{n:'إزاز سيكوريت 6 مم شفاف', u:'م²', p:[700,850,1000], src:'بانكير 7 يونيو 2026: السيكوريت 700–1,000 للمتر'},
@@ -624,7 +677,7 @@ var FFE = (function(){
   var SURF = ['s_mel','s_meli','s_hpl','s_ven','s_vena','s_none'];
   var PAINTS = ['none','pu','ester','nitro','duco'];
   var EDGES = ['e_lip','e_pvc','e_vt'];
-  var BEECH = {struct:{n:'زان في الأجزاء الحاملة بس (الصح)', f:1, w:'beech'}, full:{n:'زان كامل حتى الحشو', f:1.7, w:'beech'}, moski:{n:'موسكي بدل الزان (مش منصوح)', f:1, w:'moski'}};
+  var BEECH = {struct:{n:'زان في الأجزاء الحاملة بس (الصح)', f:1, w:'beech'}, full:{n:'زان كامل حتى الحشو', f:1.4, w:'beech'}, moski:{n:'موسكي بدل الزان (مش منصوح)', f:1, w:'moski'}, solid:{n:'زان سليم مجفف عود واحد من غير فواصل', f:1.15, w:'beech'}};
   var GRADES = ['اقتصادي','متوسط','عالي'];
   var GRADE_HW = ['محلي/صيني','تركي','Blum أو Hettich'];
   var FOAM = ['25','30','35'];
@@ -632,14 +685,14 @@ var FFE = (function(){
   /* zone = {core, surf, paint, edge} */
   function Z(core,surf,paint,edge){ return {core:core,surf:surf,paint:paint,edge:edge}; }
   var CASE_PRESETS = [
-    {id:'value', n:'أحسن قيمة', d:'العلب من جوه ميلامين على كونتر كبس، والضلف والجزء الظاهر قشرة طبيعية وبولي يوريثان، وقواشيط زان. بيوفر من غير ما يبان.',
-      car:Z('k_kabs','s_mel','none','e_pvc'), fr:Z('k_kabs','s_ven','pu','e_lip'), beech:'struct', back:'back4', rec:true},
+    {id:'value', n:'أحسن قيمة: ستاندرد كونتر جود وود', d:'كله كونتر جود وود 18 مم. من جوه ميلامين مستورد (كرونوسبان أو إيجر) وشريط PVC 2 مم، ومن بره قشرة طبيعية وبولي يوريثان مط وقواشيط زان. ضهر أبلكاش 8 مم في مجرى وعوارض تعليق، مفصلات Blum، مجاري Samet فتح كامل، ومسكات مخفية من غير مقابض. بيعيش العمر ومن غير مصاريف زيادة.',
+      car:Z('k_good','s_meli','none','e_pvc'), fr:Z('k_good','s_ven','pu','e_lip'), beech:'struct', back:'back8p', hingeT:2, hdl:'h_hidden', std:'good'},
     {id:'natural', n:'طبيعي كامل', d:'كونتر كبس بقشرة طبيعية جوه وبره، بولي يوريثان، قواشيط زان، وزان كامل في الهياكل.',
-      car:Z('k_kabs','s_ven','nitro','e_lip'), fr:Z('k_kabs','s_ven','pu','e_lip'), beech:'full', back:'back4'},
+      car:Z('k_kabs','s_ven','nitro','e_lip'), fr:Z('k_kabs','s_ven','pu','e_lip'), beech:'full', back:'back8p'},
     {id:'ester', n:'كلاسيك أستر لامع', d:'كونتر بقشرة ودهان أستر لامع. شكله لامع زي الإزاز بس بيتشرخ ويصفر مع الوقت.',
-      car:Z('k_aro','s_ven','nitro','e_vt'), fr:Z('k_aro','s_ven','ester','e_lip'), beech:'struct', back:'back4'},
+      car:Z('k_aro','s_ven','nitro','e_vt'), fr:Z('k_aro','s_ven','ester','e_lip'), beech:'struct', back:'back8p'},
     {id:'hpl', n:'ميلامين + واجهات HPL', d:'علب ميلامين، وضلف كونتر مكسية HPL. ممتاز للمطبخ والدريسنج والأطفال: مايتخربش ومايتعبكش.',
-      car:Z('k_obour','s_mel','none','e_pvc'), fr:Z('k_good','s_hpl','none','e_pvc'), beech:'struct', back:'back4'},
+      car:Z('k_obour','s_mel','none','e_pvc'), fr:Z('k_good','s_hpl','none','e_pvc'), beech:'struct', back:'back8p'},
     {id:'meli', n:'ميلامين مستورد', d:'MDF ميلامين مستورد للعلب والضلف، شريط PVC 2 مم. نضيف وسعره كويس، بس مسطح ومفيهوش روح الخشب.',
       car:Z('mdf','s_meli','none','e_pvc'), fr:Z('mdf','s_meli','none','e_pvc'), beech:'struct', back:'back3'},
     {id:'mel', n:'ميلامين محلي', d:'MDF ميلامين محلي أو تركي. أرخص اختيار محترم.',
@@ -648,8 +701,12 @@ var FFE = (function(){
       car:Z('mdf','s_mel','none','e_pvc'), fr:Z('mdf','s_none','duco','e_pvc'), beech:'struct', back:'back3'},
     {id:'eco', n:'اقتصادي (مش منصوح)', d:'كونتر مستورد رخيص وقشرة صناعي ونيترو. ده اللي بيتباع ساعات على إنه «طبيعي».',
       car:Z('k_imp','s_vena','nitro','e_vt'), fr:Z('k_imp','s_vena','nitro','e_vt'), beech:'moski', back:'back3', bad:true},
-    {id:'quality', n:'جودة عالية', d:'العلب كونتر جود وود بميلامين مستورد (إيجر أو كرونوسبان) وشريط PVC 2 مم، والضلف والجنوب الظاهرة كونتر كبس بقشرة طبيعية وبولي يوريثان وقواشيط زان، والضهر أبلكاش 4 مم. أعلى جودة من غير فلوس مالهاش لازمة.',
-      car:Z('k_good','s_meli','none','e_pvc'), fr:Z('k_kabs','s_ven','pu','e_lip'), beech:'struct', back:'back4'}
+    {id:'quality', n:'جودة عالية', d:'العلب كونتر جود وود بميلامين مستورد (إيجر أو كرونوسبان) وشريط PVC 2 مم، والضلف والجنوب الظاهرة كونتر كبس بقشرة طبيعية وبولي يوريثان وقواشيط زان، والضهر أبلكاش 8 مم، ومفصلات Blum ومسكات مخفية. أعلى جودة من غير فلوس مالهاش لازمة.',
+      car:Z('k_good','s_meli','none','e_pvc'), fr:Z('k_kabs','s_ven','pu','e_lip'), beech:'struct', back:'back8p', hingeT:2, hdl:'h_hidden'},
+    {id:'mdfstd', n:'ستاندرد MDF', d:'كله MDF تركي أو إسباني 18 مم. من جوه ميلامين مستورد وشريط PVC 2 مم، ومن بره قشرة طبيعية وبولي يوريثان مط وقواشيط زان على الحرف. ضهر MDF 8 مم في مجرى وعوارض تعليق، مفصلات Blum، مجاري Samet فتح كامل، ومسكات مخفية. أرخص من الكونتر، وأنعم في الدهان والتفريز، بس محتاج تجميع بمسامير كونفرمات وخوابير، وبعيد عن المية.',
+      car:Z('mdf','s_meli','none','e_pvc'), fr:Z('mdf','s_ven','pu','e_lip'), beech:'struct', back:'back8m', hingeT:2, hdl:'h_hidden', std:'mdf'},
+    {id:'ideal', n:'المواصفة المثالية لكل قطعة', d:'كل قطعة بالخامة الصح ليها: الدواليب والوحدات ستاندرد جود وود (ميلامين من جوه، وقشرة وبولي يوريثان وقواشيط زان من بره، ضهر 8 مم، Blum)، والسفرة والترابيزات رجولها وكراسيها زان سليم من غير فواصل وقرصتها بولي يوريثان 2K، والجزامة من جوه بتتمسح، وأوضة الأطفال ميلامين بحروف مدورة. من غير استرخاص ومن غير غلو.',
+      car:Z('k_good','s_meli','none','e_pvc'), fr:Z('k_good','s_ven','pu','e_lip'), beech:'struct', back:'back8p', hingeT:2, hdl:'h_hidden', perRoom:true, rec:true}
   ];
   var KITCHEN_PRESETS = [
     {id:'hplmr', n:'HPL على أخضر (أحسن قيمة)', d:'العلب MDF أخضر مقاوم للرطوبة بميلامين، والضلف HPL. أنسب مطبخ للسعر.', car:Z('mdf_mr','s_mel','none','e_pvc'), fr:Z('mdf_mr','s_hpl','none','e_pvc'), beech:'struct', back:'back3', rec:true},
@@ -658,14 +715,15 @@ var FFE = (function(){
     {id:'kduco', n:'دوكو بولي يوريثان', d:'شكل فخم، بس أغلى وبيتخبط.', car:Z('mdf_mr','s_mel','none','e_pvc'), fr:Z('mdf_mr','s_none','duco','e_pvc'), beech:'struct', back:'back3'}
   ];
   var UPH_PRESETS = [
-    {id:'value', n:'هيكل زان + إسفنج 30', d:'زان في الكمر والرجول والدراعات، موسكي أو أبلكاش في الحشو، سوست زجزاج، إسفنج كثافة 30.', beech:'struct', rec:true},
+    {id:'value', n:'هيكل زان + إسفنج 30', d:'زان في الكمر والرجول والدراعات، موسكي أو أبلكاش في الحشو، سوست زجزاج، إسفنج كثافة 30.', beech:'struct'},
     {id:'full', n:'زان كامل + إسفنج 35', d:'هيكل زان كامل وإسفنج كثافة 35 وفايبر أكتر. أطول عمر.', beech:'full', foamUp:1},
-    {id:'eco', n:'هيكل موسكي (مش منصوح)', d:'هيكل موسكي وإسفنج 25. بيصوّت ويهبط بسرعة.', beech:'moski', foamDown:1, bad:true}
+    {id:'eco', n:'هيكل موسكي (مش منصوح)', d:'هيكل موسكي وإسفنج 25. بيصوّت ويهبط بسرعة.', beech:'moski', foamDown:1, bad:true},
+    {id:'comfort', n:'راحة زي IKEA + هيكل متين', d:'هيكل زان في الكمر والرجول والدراعات وأبلكاش 18 مم بدل الموسكي، قعدة سوست بوكت فوقها إسفنج HR كثافة 35 وفايبر، الضهر إسفنج 25 وفايبر، ومخدات ضهر سايبة، وكسوة بتتفك بسوستة وتتغسل.', beech:'struct', foamUp:1, pocket:true, ply:true, covers:true, rec:true}
   ];
 
   /* rooms: kind case|kitchen|uph|dining. geometry gives sheets per zone, painted m² factors, hardware counts, beech m³ */
   var ROOMS = [
-    {id:'master', kind:'case', n:'أوضة النوم الرئيسية', icon:'سرير', sub:'سرير + 2 كومود + دولاب', dims:[
+    {id:'master', kind:'case', idealSpec:['السرير: جنبين وكمر زان سليم 2.5 × 10 سم على الأقل، وملل خشب مقوّس (مرن) على شاسيه زان، ورجلين في النص'], n:'أوضة النوم الرئيسية', icon:'سرير', sub:'سرير + 2 كومود + دولاب', dims:[
         {k:'w', n:'عرض الدولاب (الضلع الكبير على الحيطة)', u:'متر', v:2.2, min:1, max:4, step:0.1},
         {k:'w2', n:'الضلع التاني لو حرف L (على الحيطة من الركنة)', u:'متر', v:1, min:0.6, max:3, step:0.1},
         {k:'bed', n:'عرض السرير', u:'سم', v:160, min:120, max:200, step:20},
@@ -678,6 +736,7 @@ var FFE = (function(){
         {k:'doors', n:'ضلف الدولاب', v:'hinge', o:[['hinge','خشب مفصلات'],['swood','خشب سحب (جرار)'],['sglass','إزاز سحب في قطاع ألومنيوم']]},
         {k:'glass', n:'نوع الإزاز', v:'g_sec_tint', when:{doors:'sglass'}, o:[['g_sec_tint','سيكوريت 6 مم مدخّن أو برونز'],['g_sec_frost','سيكوريت 6 مم فاميه'],['g_sec_clear','سيكوريت 6 مم شفاف'],['g_lacobel','لاكوبيل ملوّن'],['g_mirror','مراية بفيلم أمان'],['g_film','إزاز عادي بفيلم أمان']]},
         {k:'top', n:'وحدات خشب فوق الضلف', v:'0', o:[['0','لا، دولاب 240 من غير وحدات'],['1','وحدات 45 سم جوه الـ 240 (الضلف أقصر)'],['ceil','ضلف 240 عادية ووحدات فوقها لحد السقف']]},
+        {k:'nsm', n:'الكومود', v:'wall', o:[['wall','معلق على الحيطة'],['floor','على الأرض']]},
         {k:'shoes', n:'جزم جوه الدولاب', v:'none', o:[['none','لا'],['heels','رف للكعب العالي بس'],['fixed2','جزامة: 2 رف مايل ثابت'],['pull2','جزامة: 2 رف مايل بمجرى سحب']]}],
       geo:function(d,c){ var L=c.shape==='l', w=L?Math.max(0.6,d.w-0.62):d.w, ex=L?Math.max(0,d.w2-0.62):0, dr=d.dresser, slide=c.doors!=='hinge', top=c.top!=='0', ceil=c.top==='ceil';
         var H=c.top==='1'?1.95:2.4, tH=ceil?Math.max(0.3,d.ceil-2.4):(top?0.45:0), longA=w*H, shortA=ex*H, topA=(w+ex)*tH, wsh=function(a){ return a/2.98*1.1; };
@@ -685,10 +744,11 @@ var FFE = (function(){
         if(c.doors==='sglass'){ xl.push({l:P[c.glass]?P[c.glass].n+' — الضلف السحب':'إزاز', q:longA*0.92, k:c.glass});
           xl.push({l:'قطاع ألومنيوم للضلف — '+(w<=2.4?2:3)+' ضلف', q:longA, k:'alu_frame'}); }
         if(slide) xl.push({l:'مجرى وعجل الضلف السحب', q:w, k:'s_track', grade:true});
+        if(c.nsm!=='floor') xl.push({l:'عارضة تعليق وكوابيل مخفية للكومود المعلق', q:2, k:'hang'});
         var shoes=c.shoes!=='none', heels=c.shoes==='heels'; if(shoes) xl.push({l:heels?'مسطرة ألومنيوم لرف الكعب العالي':'مسطرة ألومنيوم لرفوف الجزامة', q:heels?1:2, k:'shoe_rail'});
         return { car:(d.w+(L?d.w2:0))*1.9*(slide?1.08:1)+(ceil?(d.w+(L?d.w2:0))*1.9*(tH/2.4)*1.3:0)+0.8+0.9+dr*1.2+(shoes?(heels?0.15:0.35):0), fr:wsh(woodA)+0.7+0.4+dr*0.5, back:(d.w+(L?d.w2:0))*1.0+1+dr*0.4,
-          hinge:nHing*(H>2?4:3)+Math.round((w+ex)/0.5)*(top?2:0)*(ceil&&tH>0.7?1.5:1), slide:2+4+dr*3+(c.shoes==='pull2'?2:0), handle:nHing+(top?Math.round((w+ex)/0.5):0)+6+dr*3+(slide?(w<=2.4?2:3):0),
-          beech:[0.10,0.13,0.16].map(function(x){ return x*(d.bed/160)+0.02; }), labx:[1500,2000,3000].map(function(x,i){ return x+(slide?[800,1200,1800][i]:0)+(L?[700,1000,1400][i]:0)+(ceil?[600,900,1300][i]:0); }), labxn:'مصنعية السرير والملل'+(slide?' وتركيب الضلف السحب':'')+(L?' والركنة':'')+(ceil?' والوحدات لحد السقف':''), xl:xl }; },
+          hinge:nHing*(H>2?4:3)+Math.round((w+ex)/0.5)*(top?2:0)*(ceil&&tH>0.7?1.5:1), slide:2+(c.nsm==='floor'?4:2)+dr*3+(c.shoes==='pull2'?2:0), handle:nHing+(top?Math.round((w+ex)/0.5):0)+6+dr*3+(slide?(w<=2.4?2:3):0),
+          beech:[0.07,0.09,0.12].map(function(x){ return x*(d.bed/160)+0.015; }), labx:[1500,2000,3000].map(function(x,i){ return x+(slide?[800,1200,1800][i]:0)+(L?[700,1000,1400][i]:0)+(ceil?[600,900,1300][i]:0); }), labxn:'مصنعية السرير والملل'+(slide?' وتركيب الضلف السحب':'')+(L?' والركنة':'')+(ceil?' والوحدات لحد السقف':''), xl:xl }; },
       spec:function(d,c){ var L=c.shape==='l', top=c.top==='1', ceil=c.top==='ceil', H=top?195:240, tH=Math.round(Math.max(0.3,d.ceil-2.4)*100), out=[];
         var fw=L?Math.max(0.6,d.w-0.62):d.w, nd=fw<=2.4?2:3, dW=Math.round(fw/nd*100+3);
         out.push('دولاب '+(L?'حرف L: ضلع '+d.w+' متر وضلع '+d.w2+' متر (المقاسين على الحيطة من الركنة)':'مستقيم عرض '+d.w+' متر')+'، ارتفاع '+(ceil?'لحد السقف (السقف حوالي '+Math.round(d.ceil*100)+' سم): جسم 240 سم ووحدات فوقه':'240 سم')+'، عمق '+(c.doors==='hinge'?60:65)+' سم، شماعة ورفوف و2 درج داخلي على الأقل');
@@ -704,15 +764,18 @@ var FFE = (function(){
         if(c.shoes==='heels') out.push('رف واحد للكعب العالي جوه الدولاب '+(L?'في أسفل الضلع الصغير':'في أسفل آخر خانة')+'، مايل لقدام حوالي 15 درجة وعليه مسطرة ألومنيوم، الخانة ارتفاعها حوالي 25 سم، ميلامين أو HPL عشان يتمسح');
         else if(c.shoes!=='none') out.push('جزامة جوه الدولاب '+(L?'في أسفل الضلع الصغير (ورا الضلفة المفصلات)':'في أسفل آخر خانة')+': '+(c.shoes==='pull2'?'2 رف بيطلعوا لبره على مجرى سحب':'2 رف ثابتين')+'، مايلين لقدام حوالي 15 درجة وعليهم مسطرة ألومنيوم توقف الجزمة، المسافة بين الرفين حوالي 18 سم والارتفاع كله حوالي 40 سم، الرفوف ميلامين أو HPL عشان تتمسح، وفتحات تهوية في الضهر أو القاعدة، ومن غير ما الجزامة تاخد من مكان الشماعة الطويلة');
         out.push('سرير لمرتبة '+d.bed+' × 200 سم: المقاس من بره حوالي '+(d.bed+12)+' × 212 سم، ارتفاع الملل من الأرض 35 سم، والضهر 110–120 سم، بملل زان متين ورجل في النص');
-        out.push('2 كومود: عرض '+Math.round(d.ns*100)+' سم، عمق 40 سم، ارتفاع 55 سم (قد ارتفاع المرتبة تقريباً)، كل واحد بدرجين على مجرى');
+        if(c.nsm==='floor') out.push('2 كومود: عرض '+Math.round(d.ns*100)+' سم، عمق 40 سم، ارتفاع 55 سم (قد ارتفاع المرتبة تقريباً)، كل واحد بدرجين على مجرى');
+        else out.push('2 كومود معلق على الحيطة: عرض '+Math.round(d.ns*100)+' سم، عمق 40 سم، ارتفاعه 30 سم، بدرج واحد على مجرى فتح كامل، وسطحه على ارتفاع حوالي 55 سم من الأرض (قد المرتبة)، وتحته فاضي. متعلق بعارضة فرنساوي (French cleat) خشب زان أو كوابيل حديد مخفية بخوابير في حيطة طوب، مش جبس بورد، وضهره 18 مم مش 8');
         if(d.dresser) out.push((d.dresser>1?d.dresser+' ':'')+'تسريحة: عرض '+Math.round(d.dw*100)+' سم، عمق 45 سم، ارتفاع 78 سم، بدرجين ومراية فوقها حوالي '+Math.min(80,Math.round(d.dw*60))+' × 90 سم');
         return out; }},
-    {id:'dressing', kind:'case', n:'الدريسنج روم', icon:'دريسنج', sub:'بالمتر الطولي، ارتفاع 260', dims:[
+    {id:'dressing', kind:'case', ideal:{fr:{surf:'s_meli',paint:'none',edge:'e_pvc'}}, n:'الدريسنج روم', icon:'دريسنج', sub:'بالمتر الطولي، ارتفاع 260', dims:[
         {k:'l', n:'الطول', u:'متر طولي', v:3, min:1, max:10, step:0.5},
         {k:'doors', n:'بضلف؟', u:'0 مفتوح، 1 بضلف', v:0, min:0, max:1, step:1}],
       geo:function(d){ return { car: d.l*1.3, fr: d.l*(d.doors?0.9:0.15), back: d.l*0.6, hinge: d.doors?Math.round(d.l/0.5)*4:0, slide: Math.round(d.l*1.5), handle: (d.doors?Math.round(d.l/0.5):0)+Math.round(d.l*1.5), beech:[0,0,0] }; },
       spec:function(d){ return ['دريسنج طوله '+d.l+' متر طولي وارتفاعه 260 سم', d.doors?'بضلف مفصلات':'مفتوح من غير ضلف', 'أدراج: '+Math.round(d.l*1.5)+' درج، ورفوف وشماعات ومكان للشنط فوق']; }},
-    {id:'dining', kind:'dining', n:'السفرة', icon:'سفرة', sub:'ترابيزة + كراسي + بوفيه', dims:[
+    {id:'dining', kind:'dining', n:'السفرة', icon:'سفرة', sub:'ترابيزة + كراسي + بوفيه',
+      ideal:{beech:'solid'}, idealShort:'الرجول والكراسي زان سليم من غير فواصل، نقر ولسان، والقرصة بولي يوريثان 2K',
+      idealSpec:['القرصة: كونتر جود وود دوبل 36 مم بقشرة طبيعية وبولي يوريثان 2K (مكوّنين) بيستحمل الحرارة والخدش والمية، وحرفها زان سليم 4 سم','الرجول والكمر: زان سليم مجفف (رطوبة 8–10%) عود واحد من غير فواصل (فنجر)، والكمر متركب في الرجل نقر ولسان','الكراسي: زان سليم مجفف عود واحد من غير فواصل، مجمعة نقر ولسان بغرا مش مسامير بس، وزوايا تقوية في الأركان. القعدة أبلكاش 12 مم وإسفنج كثافة 35 سمك 5 سم، والقماش سهل التنضيف (مقاوم للبقع) أو جلد صناعي'], dims:[
         {k:'chairs', n:'عدد الكراسي', u:'كرسي', v:6, min:2, max:12, step:1},
         {k:'len', n:'طول الترابيزة', u:'سم', v:180, min:100, max:260, step:10},
         {k:'buffet', n:'بوفيه أو نيش', u:'0 أو 1 أو 2', v:1, min:0, max:2, step:1},
@@ -722,8 +785,8 @@ var FFE = (function(){
         labx:[900,1200,1600].map(function(x,i){ return x*d.chairs + [2000,2800,3800][i]; }), labxn:'مصنعية الكراسي والترابيزة',
         chairs:d.chairs }; },
       spec:function(d){
-        return ['ترابيزة '+d.len+' × '+(d.len>=180?90:85)+' سم وارتفاع 76 سم، القرصة دوبل وحرفها زان',
-          'عدد '+d.chairs+' كرسي زان كامل، قعدة منجّدة 45 × 45 سم، ارتفاع القعدة 46 سم والضهر حوالي 95 سم'+(d.len>=170&&d.chairs<=6?'، '+Math.ceil(d.chairs/2)+' على كل جنب':''),
+        return ['ترابيزة '+d.len+' × '+(d.len>=180?90:85)+' سم وارتفاع 76 سم',
+          'عدد '+d.chairs+' كرسي، قعدة منجّدة 45 × 45 سم، ارتفاع القعدة 46 سم والضهر حوالي 95 سم'+(d.len>=170&&d.chairs<=6?'، '+Math.ceil(d.chairs/2)+' على كل جنب':''),
           d.buffet? ('بوفيه عرض '+Math.round(d.bw*100)+' سم، عمق 45 سم، ارتفاع 85 سم'+(d.buffet===2?'، ونيش بنفس العرض فوقه أو جنبه':'')) : 'من غير بوفيه']; }},
     {id:'antreh', kind:'uph', n:'الانتريه (الريسبشن)', icon:'انتريه', sub:'كنب + فوتيهات', dims:[
         {k:'seats', n:'عدد المقاعد', u:'مقعد', v:8, min:1, max:20, step:1, hint:'كنبة 3 = 3 مقاعد، فوتيه = 1'},
@@ -742,8 +805,8 @@ var FFE = (function(){
         {k:'l2', n:'الضلع الصغير (الشيزلونج)', u:'متر', v:1.7, min:0, max:2.5, step:0.05, hint:'0 = كنبة مستقيمة'},
         {k:'dp', n:'العمق', u:'متر', v:0.9, min:0.75, max:1.1, step:0.05}],
       geo:function(d){ return {seats:d.seats, metres:d.seats*3.4}; },
-      spec:function(d){ return [(d.l2>0?'كنبة ليفنج حرف L: الضلع الكبير '+Math.round(d.l1*100)+' سم والضلع الصغير '+Math.round(d.l2*100)+' سم (المقاسين من بره لبره)':'كنبة ليفنج مستقيمة طول '+Math.round(d.l1*100)+' سم')+'، عمق '+Math.round(d.dp*100)+' سم، '+d.seats+' مقاعد', 'ارتفاع القعدة 45 سم والضهر حوالي 85 سم']; }},
-    {id:'desk', kind:'case', n:'مكتب في الليفنج', icon:'مكتب', sub:'جنب الكنبة على نفس الحيطة، أو حرف L', bt:'في رجول المكتب أو جنوبه وحرف القرصة', dims:[
+      spec:function(d){ return [(d.l2>0?'كنبة ليفنج حرف L: الضلع الكبير '+Math.round(d.l1*100)+' سم والضلع الصغير '+Math.round(d.l2*100)+' سم (المقاسين من بره لبره)':'كنبة ليفنج مستقيمة طول '+Math.round(d.l1*100)+' سم')+'، عمق '+Math.round(d.dp*100)+' سم، '+d.seats+' مقاعد']; }},
+    {id:'desk', kind:'case', idealSpec:['القرصة دوبل بولي يوريثان 2K عشان اللابتوب والكوبايات، وحرفها زان سليم'], n:'مكتب في الليفنج', icon:'مكتب', sub:'جنب الكنبة على نفس الحيطة، أو حرف L', bt:'في رجول المكتب أو جنوبه وحرف القرصة', dims:[
         {k:'w', n:'عرض المكتب', u:'متر', v:1.1, min:0.8, max:1.8, step:0.1, hint:'1.10 كفاية للابتوب وشاشة'},
         {k:'dp', n:'العمق', u:'متر', v:0.55, min:0.45, max:0.7, step:0.05}],
       choices:[{k:'place', n:'المكان', v:'same', o:[['same','على نفس حيطة الكنبة (في الركنة)'],['l','حرف L مع الكنبة']]},
@@ -759,17 +822,19 @@ var FFE = (function(){
         if(c.drawers==='1') o.push('وحدة 3 أدراج على مجرى بلي بقفل هادي تحت المكتب');
         if(c.shelves==='1') o.push('رفين حيطة فوق المكتب بنفس الخامة، عمق 25 سم، متثبتين بكوابيل مخفية');
         o.push('سيب 75 سم على الأقل ورا المكتب لكرسي المكتب'); return o; }},
-    {id:'kids', kind:'case', n:'أوضة الأطفال', icon:'أطفال', sub:'سرير + دولاب + مكتب', dims:[
+    {id:'kids', kind:'case', ideal:{car:{core:'mdf'}, fr:{core:'mdf',surf:'s_meli',paint:'none',edge:'e_pvc'}, back:'back8m'}, idealSpec:['ميلامين مستورد بحروف PVC 2 مم مدورة، من غير زوايا حادة، والدولاب متثبت في الحيطة'], n:'أوضة الأطفال', icon:'أطفال', sub:'سرير + دولاب + مكتب', dims:[
         {k:'w', n:'عرض الدولاب', u:'متر', v:1.6, min:0.8, max:3, step:0.1},
         {k:'beds', n:'عدد السراير', u:'سرير', v:1, min:1, max:2, step:1}],
       geo:function(d){ return { car: d.w*1.9 + d.beds*0.9 + 0.8, fr: d.w*0.85 + d.beds*0.5 + 0.3, back: d.w*1.0+0.6, hinge: Math.round(d.w/0.5)*4, slide: 4+d.beds*2, handle: Math.round(d.w/0.5)+4+d.beds*2,
         beech:[0.03,0.05,0.07].map(function(x){ return x*d.beds; }) }; },
       spec:function(d){ return ['دولاب عرض '+d.w+' متر وارتفاع 220 سم', d.beds+' سرير 120 سم بدرج تحت', 'مكتب صغير بدرجين']; }},
-    {id:'tv', kind:'case', n:'وحدة التلفزيون', icon:'تلفزيون', sub:'وحدة أرضية + رفوف', bt:'في القاعدة والرجول', dims:[
+    {id:'tv', kind:'case', idealSpec:['معلقة 20 سم من الأرض (أو على قاعدة زان)، وفتحات تهوية ورا الأجهزة، والشاشة متعلقة على الحيطة مش على الوحدة'], n:'وحدة التلفزيون', icon:'تلفزيون', sub:'وحدة أرضية + رفوف', bt:'في القاعدة والرجول', dims:[
         {k:'w', n:'العرض', u:'متر', v:2.2, min:1, max:4, step:0.1}],
       geo:function(d){ return { car: d.w*0.9, fr: d.w*0.3, back: d.w*0.4, hinge: 4, slide: 2, handle: 4, beech:[0.005,0.01,0.02] }; },
       spec:function(d){ return ['وحدة تلفزيون أرضية عرض '+Math.round(d.w*100)+' سم، عمق 40 سم، ارتفاع 45 سم، بدرجين وضلفتين وفتحة للأجهزة والأسلاك من ورا', 'رف حائط بطول الوحدة تقريباً، عمق 25 سم، على ارتفاع حوالي 160 سم من الأرض']; }},
-    {id:'shoecab', kind:'case', n:'جزامة المدخل', icon:'جزامة', sub:'جنب باب الشقة، عمق 35 سم', dims:[
+    {id:'shoecab', kind:'case', n:'جزامة المدخل', icon:'جزامة', sub:'جنب باب الشقة، عمق 35 سم',
+      idealShort:'من جوه ميلامين بيتمسح وقاعدة مرفوعة',
+      idealSpec:['من جوه ميلامين مستورد بيتمسح، والرفوف أو القلّابات بلاستيك أو ميلامين سهل الغسيل','مرفوعة 10 سم على رجول ألومنيوم أو معلقة، عشان المسح تحتها، وفتحات تهوية في الضهر'], dims:[
         {k:'w', n:'العرض', u:'متر', v:1, min:0.5, max:2.4, step:0.1},
         {k:'h', n:'الارتفاع', u:'متر', v:1, min:0.6, max:2.2, step:0.1}],
       choices:[{k:'style', n:'نوع الضلف', v:'flip', o:[['flip','ضلف قلّاب مايلة (الجزم واقفة)'],['doors','ضلف مفصلات ورفوف مايلة']]}],
@@ -778,7 +843,9 @@ var FFE = (function(){
         return { car:d.w*d.h*1.25, fr:d.w*d.h/2.98*1.1, back:d.w*d.h/2.98+0.1, hinge:flip?0:Math.round(d.w/0.5)*2, slide:0, handle:flip?rows*cols:Math.round(d.w/0.5), beech:[0,0,0], xl:xl }; },
       spec:function(d,c){ var rows=Math.max(2,Math.round(d.h/0.33)), cols=Math.max(1,Math.ceil(d.w/1.0-0.05));
         return ['جزامة مدخل عرض '+d.w+' متر وارتفاع '+d.h+' متر وعمق حوالي 35 سم', c.style==='flip' ? rows*cols+' ضلف قلّاب مايلة (الجزم بتقف جواها)، بمكانيزم متين والماركة مكتوبة' : 'ضلف مفصلات وجوه رفوف مايلة بمسطرة ألومنيوم', 'فتحات تهوية في الضهر أو القاعدة، والرفوف من جوه ميلامين عشان تتمسح', 'سطح فوقها ينفع يتحط عليه مفاتيح أو ديكور']; }},
-    {id:'coffee', kind:'case', n:'ترابيزات الصالون', icon:'ترابيزة', sub:'ترابيزة وسط وترابيزات جنب', bt:'في الرجول وحروف القرصة', dims:[
+    {id:'coffee', kind:'case', n:'ترابيزات الصالون', icon:'ترابيزة', sub:'ترابيزة وسط وترابيزات جنب',
+      ideal:{beech:'solid'}, idealShort:'الرجول زان سليم، والقرصة بولي يوريثان 2K',
+      idealSpec:['القرصة: كونتر جود وود دوبل بقشرة طبيعية وبولي يوريثان 2K بيستحمل كوباية سخنة ومية (أو سطح سيراميك أو رخام صناعي 12 مم لو عايزين أقوى)، وحرفها زان سليم 3–4 سم','الرجول: زان سليم مجفف عود واحد من غير فواصل، وتحت كل رجل لباد'], bt:'في الرجول وحروف القرصة', dims:[
         {k:'center', n:'ترابيزة وسط', u:'عدد', v:1, min:0, max:3, step:1},
         {k:'side', n:'ترابيزات جنب', u:'عدد', v:2, min:0, max:6, step:1},
         {k:'cl', n:'طول ترابيزة الوسط', u:'متر', v:1.2, min:0.6, max:1.6, step:0.05},
@@ -788,7 +855,7 @@ var FFE = (function(){
         beech:[0.010,0.012,0.016].map(function(x){ return x*n+d.center*0.01; }), labx:[1200,1600,2200].map(function(x,i){ return x*d.center+[600,800,1100][i]*d.side; }), labxn:'مصنعية الترابيزات' }; },
       spec:function(d){ var o=[]; if(d.center) o.push('ترابيزة وسط'+(d.center>1?' عدد '+d.center:'')+': '+Math.round(d.cl*100)+' × '+Math.round(d.cw*100)+' سم، ارتفاع 42 سم (أوطى من قعدة الكنبة بحوالي 3 سم)');
         if(d.side) o.push('ترابيزات جنب عدد '+d.side+': '+Math.round(d.ss*100)+' × '+Math.round(d.ss*100)+' سم، ارتفاع 55 سم (قد مسند الكنبة تقريباً)');
-        o.push('القرصة دوبل وحرفها قواشيط زان، والرجول زان سليم'); return o; }},
+        return o; }},
     {id:'kitchen', kind:'kitchen', n:'المطبخ', icon:'مطبخ', sub:'بالمتر الطولي، من غير الرخامة والأجهزة', dims:[
         {k:'l', n:'الطول', u:'متر طولي', v:7.5, min:2, max:15, step:0.5}],
       geo:function(d){ return { car: d.l*1.0, fr: d.l*0.5, back: d.l*0.35, hinge: Math.round(d.l*3), slide: Math.round(d.l*0.6), handle: Math.round(d.l*2.2), beech:[0,0,0] }; },
@@ -803,6 +870,7 @@ var FFE = (function(){
   function pz(cfg, r){ var ps=presets(r), p=ps[Math.min(ps.length-1, Math.max(0, cfg.preset|0))];
     var o=JSON.parse(JSON.stringify(p)); if(cfg.custom && r.kind!=='uph'){ ['car','fr'].forEach(function(z){ var c=cfg.custom[z]; if(c) Object.keys(c).forEach(function(k){ if(c[k]) o[z][k]=c[k]; }); }); if(cfg.custom.beech && BEECH[cfg.custom.beech]) o.beech=cfg.custom.beech; }
     if(cfg.custom && r.kind==='uph' && cfg.custom.beech && BEECH[cfg.custom.beech]) o.beech=cfg.custom.beech;
+    if(o.perRoom && r.ideal && !cfg.custom){ var I=r.ideal; ['car','fr'].forEach(function(z){ if(I[z]) o[z]=Object.assign({},o[z],I[z]); }); ['beech','back','hingeT','hdl'].forEach(function(k){ if(I[k]!=null) o[k]=I[k]; }); }
     return o; }
   function pr(k,t,lv){ var a=P[k].p; return a[lv==null?t:lv]; }
   var WASTE=1.15;
@@ -815,13 +883,15 @@ var FFE = (function(){
     function A(l,a,k){ if(a>0) L.push({l:l, amt:Math.round(a), est:true, k:k}); }
     if(r.kind==='uph'){
       var bm=BEECH[p.beech], ft=Math.min(2,Math.max(0,t+(p.foamUp||0)-(p.foamDown||0)));
-      M(bm.w==='beech'?'زان الهيكل (الكمر والرجول والدراعات)':'موسكي للهيكل', g.seats*[0.025,0.03,0.035][t]*bm.f*WASTE, bm.w);
-      M('موسكي وأبلكاش للحشو', g.seats*0.012*WASTE, 'moski');
-      A('مصنعية نجارة الهيكل', g.seats*[500,700,1000][t], 'lab');
-      L.push({l:'إسفنج كثافة '+FOAM[ft], q:g.seats, unit:'مقعد', price:P.foam.p[ft], k:'foam', est:true});
+      M(bm.w==='beech'?'زان الهيكل (الكمر والرجول والدراعات)':'موسكي للهيكل', g.seats*[0.022,0.026,0.03][t]*bm.f*WASTE, bm.w);
+      if(p.ply) M('أبلكاش 18 مم للهيكل والحشو', g.seats*0.25*WASTE, 'ply18'); else M('موسكي وأبلكاش للحشو', g.seats*0.012*WASTE, 'moski');
+      if(p.pocket) M(P.pocket.n, g.seats, 'pocket');
+      A('مصنعية نجارة الهيكل', g.seats*[400,550,800][t], 'lab');
+      if(p.covers) A('كسوة بتتفك بسوستة (مصنعية زيادة)', g.seats*[150,250,400][t], 'lab');
+      L.push({l:(p.pocket?'إسفنج HR كثافة ':'إسفنج كثافة ')+FOAM[ft], q:g.seats, unit:'مقعد', price:P.foam.p[ft], k:'foam', est:true});
       M('فايبر وسوست زجزاج وبطانة', g.seats, 'fill');
       M('مصنعية المنجّد', g.seats, 'uphl');
-      A('رجول وتشطيب الخشب الظاهر', g.seats*[120,200,400][t], 'lab');
+      A('رجول وتشطيب الخشب الظاهر', g.seats*[100,150,300][t], 'lab');
       A('تركيب ونقل داخلي', [800,1200,1800][t], 'inst');
       return L;
     }
@@ -841,7 +911,7 @@ var FFE = (function(){
     if(bv>0) M(bm.w==='beech'?'زان: الرجول والجنبين والكمر':'موسكي بدل الزان في الهياكل', bv, bm.w);
     if(g.chairs){ A('تنجيد قعدة الكراسي (إسفنج وقماش ومصنعية)', g.chairs*[450,650,950][t], 'uph'); }
     var hw=GRADE_HW[t];
-    M('مفصلات هيدروليك '+hw, g.hinge, 'hinge', t); M('مجاري أدراج '+hw, g.slide, 'slide', t); M('مقابض', g.handle, 'handle', t);
+    var ht=p.hingeT!=null?p.hingeT:t; M('مفصلات هيدروليك '+GRADE_HW[ht], g.hinge, 'hinge', ht); M('مجاري أدراج '+hw, g.slide, 'slide', t); if(p.hdl) M(P[p.hdl].n, g.handle, p.hdl, t); else M('مقابض', g.handle, 'handle', t);
     (g.xl||[]).forEach(function(x){ M(x.l, x.q, x.k, x.grade?t:null); });
     var panel = function(z){ return z.surf==='s_mel'||z.surf==='s_meli'||z.surf==='s_hpl'; };
     var sheets = cs+fs;
@@ -869,22 +939,37 @@ var FFE = (function(){
     var r=room(id), d=dimsOf(r,cfg||{}), ch=choicesOf(r,cfg||{}), p=pz(cfg||{}, r), t=(cfg&&cfg.t!=null)?cfg.t:1, out=r.spec(d,ch).slice();
     if(r.kind==='uph'){
       var bm=BEECH[p.beech], ft=Math.min(2,Math.max(0,t+(p.foamUp||0)-(p.foamDown||0)));
+      if(p.pocket){
+        out.push('الهيكل: زان أحمر روماني سليم عود واحد (مش فنجر) في الكمر والرجول والدراعات، وأبلكاش 18 مم بدل الموسكي في الحشو، ومتجمع بغرا ومسامير وزوايا، مش دبابيس بس');
+        out.push('القعدة: سوست بوكت (كل سوستة في جيب لوحدها) على شرايط مطاط ألماني، فوقها إسفنج HR كثافة 35 سمك 10 سم وطبقة فايبر 2 سم');
+        out.push('الضهر: إسفنج كثافة 25 وفايبر، ومخدات ضهر سايبة محشية فايبر سيليكون');
+        out.push('ارتفاع القعدة 43–45 سم، وعمقها '+(r.id==='living'?'60':'55')+' سم، والضهر مايل حوالي '+(r.id==='living'?'15':'10')+' درجة، والمساند ناعمة');
+        out.push('الكسوة بتتفك بسوستة مخفية عشان تتغسل أو تتغير');
+      } else {
       out.push(bm.w==='beech' ? 'الهيكل: زان أحمر روماني سليم عود واحد (مش فنجر) في الكمر والرجول والدراعات'+(p.beech==='full'?' وكمان في الحشو':'، والحشو الداخلي موسكي أو أبلكاش 18 مم') : 'الهيكل: موسكي (اعرف إن ده أضعف)');
       out.push('سوست زجزاج أو شرايط مطاط، مش خشب مسطح بس');
-      out.push('إسفنج القعدة كثافة '+FOAM[ft]+' أو أعلى وسمك 12–15 سم، والضهر كثافة 25 + فايبر');
+      out.push('إسفنج القعدة كثافة '+FOAM[ft]+' أو أعلى وسمك 12–15 سم، والضهر كثافة 25 + فايبر'); if(r.id==='living') out.push('ارتفاع القعدة 45 سم والضهر حوالي 85 سم'); }
       out.push('القماش: '+fabric(id,cfg)+' متر تقريباً، نوعه ولونه يتحدد بعينة، والسعر يتكتب مع القماش ومن غيره');
       out.push('أشوف الهيكل على الأبيض قبل التنجيد');
       return out;
     }
+    if(p.perRoom && r.idealSpec) out=out.concat(r.idealSpec);
     function zs(z){ var s=P[z.core].n; if(z.surf!=='s_none') s+=' + '+P[z.surf].n; if(z.paint&&z.paint!=='none') s+=' + دهان '+P[z.paint].n; s+='، والحروف '+P[z.edge].n; return s; }
-    out.push('العلب والرفوف والجنوب الداخلية: '+zs(p.car)+'، سمك 18 مم');
-    out.push('الضلف والواجهات الخشب والجنب الظاهر: '+zs(p.fr)+'، سمك 18 مم'+((r.id==='master'&&ch.doors==='hinge'&&ch.top!=='1')||r.id==='kids'?'، والضلفة اللي فوق 2 متر عليها شدّاد':''));
+    var pre=(p.perRoom&&r.kind==='dining')?'البوفيه — ':'';
+    if(r.id!=='coffee') out.push(pre+'العلب والرفوف والجنوب الداخلية: '+zs(p.car)+'، سمك 18 مم');
+    out.push(pre+(r.id==='coffee'?'القرصة والحرف الظاهر: ':'الضلف والواجهات الخشب والجنب الظاهر: ')+zs(p.fr)+'، سمك 18 مم'+((r.id==='master'&&ch.doors==='hinge'&&ch.top!=='1')||r.id==='kids'?'، والضلفة اللي فوق 2 متر عليها شدّاد':''));
     var gg=r.geo(d,ch);
-    if(gg.back>0) out.push('الضهر: '+P[p.back].n+' داخل في مجرى، مش مدبّس');
+    if(gg.back>0){ if(p.back==='back8p'||p.back==='back8m') out.push('الضهر: '+P[p.back].n+' (مش 3 ولا 4 مم) داخل في مجرى ومتغرّى ومتخرّز كل 15 سم، وعارضة 18 مم فوق وتحت ورا كل علبة بتشيل الوزن، والدولاب والوحدات العالية متثبتة في الحيطة بزوايا حديد');
+      else out.push('الضهر: '+P[p.back].n+' داخل في مجرى، مش مدبّس'); }
+    if(p.car.core==='mdf'||p.fr.core==='mdf') out.push('التجميع بمسامير كونفرمات وخوابير خشب ومكن (مش مسامير خشب عادية في حرف الـ MDF)، والرف مايزيدش عرضه عن 80 سم من غير قاسم، ومفيش MDF عادي جنب مية');
+    else if(gg.car>1) out.push('التجميع بمسامير كونفرمات أو بعسلة وخوابير، والرف مايزيدش عرضه عن 90 سم من غير قاسم');
+    if(p.hdl && gg.handle>0) out.push('من غير مقابض ظاهرة: مسكة مخفية في حرف الضلف والأدراج، قطاع ألومنيوم جولا (أسود أو شامبين) أو شطفة 45 درجة مفرّزة في القواشيط'+(r.id==='master'&&ch.doors!=='hinge'?'، والضلف السحب مسكتها في القطاع نفسه':''));
     var bt=r.bt || (r.id==='master'||r.id==='kids' ? 'في رجول السرير وجنبينه والكمر' : r.kind==='dining' ? 'في رجول الترابيزة والكمر وكل الكراسي' : 'في الرجول والكمر');
-    if((gg.beech||[0,0,0])[t]>0) out.push(BEECH[p.beech].w==='beech' ? 'الخشب الصلب: زان أحمر روماني سليم عود واحد (مش فنجر) '+bt : 'الخشب الصلب: موسكي (أضعف من الزان)');
-    var hwn=[]; if(gg.hinge>0) hwn.push('مفصلات'); if(gg.slide>0) hwn.push('مجاري'); if(hwn.length) out.push('الإكسسوار: '+hwn.join(' و')+' '+GRADE_HW[t]+' سوفت كلوز، والماركة مكتوبة');
-    if(r.kind==='dining') out.push('قعدة الكراسي إسفنج كثافة 30 والقماش يتحدد بعينة');
+    var solidTold = p.perRoom && r.idealSpec && /زان سليم/.test(r.idealSpec.join(' '));
+    if(!solidTold && (gg.beech||[0,0,0])[t]>0) out.push(BEECH[p.beech].w==='beech' ? 'الخشب الصلب: زان أحمر روماني سليم عود واحد (مش فنجر) '+bt : 'الخشب الصلب: موسكي (أضعف من الزان)');
+    var hwn=[]; if(gg.hinge>0) hwn.push('مفصلات'); if(gg.slide>0) hwn.push('مجاري'); if(p.hingeT===2){ if(gg.hinge>0) out.push('المفصلات: Blum Clip Top BLUMOTION 110 درجة بالسوفت كلوز المدمج في المفصلة (أو Hettich Sensys)، بقاعدة كليب بتتظبط في 3 اتجاهات: 4 مفصلات لضلفة 240، و3 لضلفة 150–200، و2 للضلف الأصغر، والماركة مكتوبة في العقد'); if(gg.slide>0) out.push('المجاري: '+(t>=2?'Blum Tandem':'Samet Smart Slide تركي')+' فتح كامل بسوفت كلوز، تحمل 30 كيلو على الأقل، والماركة مكتوبة'); }
+    else if(hwn.length) out.push('الإكسسوار: '+hwn.join(' و')+' '+GRADE_HW[t]+' سوفت كلوز، والماركة مكتوبة');
+    if(r.kind==='dining' && !(p.perRoom && r.idealSpec)) out.push('قعدة الكراسي إسفنج كثافة 30 والقماش يتحدد بعينة');
     if(r.kind==='kitchen') out.push('الرخامة والحوض والأجهزة مش داخلين، وأي وحدة جنب الحوض أو الغسالة MDF أخضر');
     return out;
   }
@@ -930,7 +1015,7 @@ var FFE = (function(){
     master:function(d,c){ var L=c.shape==='l', o='دولاب '+(L?'حرف L ('+d.w+' × '+d.w2+' متر)':'عرض '+d.w+' متر');
       if(c.top==='ceil') o+=' لحد السقف ('+Math.round(d.ceil*100)+' سم) بوحدات فوق الضلف'; else if(c.top==='1') o+=' بوحدات فوق الضلف';
       o+= c.doors==='sglass' ? '، ضلف سحب إزاز '+sn(c.glass).replace(/^إزاز /,'') : c.doors==='swood' ? '، ضلف خشب سحب' : '، ضلف مفصلات';
-      return o+'، سرير '+d.bed+' × 200، 2 كومود '+Math.round(d.ns*100)+' سم'+(d.dresser?'، تسريحة '+Math.round(d.dw*100)+' سم':''); },
+      return o+'، سرير '+d.bed+' × 200، 2 كومود '+(c.nsm==='floor'?'':'معلق ')+Math.round(d.ns*100)+' سم'+(d.dresser?'، تسريحة '+Math.round(d.dw*100)+' سم':''); },
     dining:function(d){ return 'ترابيزة '+d.len+' × '+(d.len>=180?90:85)+' سم + '+d.chairs+' كراسي'+(d.buffet===2?' + بوفيه ونيش '+Math.round(d.bw*100)+' سم':d.buffet?' + بوفيه '+Math.round(d.bw*100)+' سم':''); },
     antreh:function(d){ var m=mix(d.seats); return [m.s?m.s+' كنبة 3 مقاعد '+Math.round(d.sl*100)+' × '+Math.round(d.sd*100):'', m.a?m.a+' فوتيه '+Math.round(d.aw*100)+' سم':''].filter(Boolean).join(' + '); },
     living:function(d){ return d.l2>0 ? 'حرف L '+Math.round(d.l1*100)+' × '+Math.round(d.l2*100)+' سم، عمق '+Math.round(d.dp*100)+'، '+d.seats+' مقاعد' : 'مستقيمة '+Math.round(d.l1*100)+' سم، '+d.seats+' مقاعد'; },
@@ -941,19 +1026,25 @@ var FFE = (function(){
   };
   function brief(id,cfg){ var r=room(id), d=dimsOf(r,cfg||{}), c=choicesOf(r,cfg||{}); return BRIEF[id] ? BRIEF[id](d,c) : r.spec(d,c)[0]; }
   function matShort(id,cfg){ var r=room(id), p=pz(cfg||{},r), t=(cfg&&cfg.t!=null)?cfg.t:1;
+    if(r.kind==='uph' && p.pocket) return 'هيكل زان وأبلكاش 18 مم، قعدة سوست بوكت وإسفنج HR كثافة 35 وفايبر، وكسوة بتتفك وتتغسل';
     if(r.kind==='uph'){ var ft=Math.min(2,Math.max(0,t+(p.foamUp||0)-(p.foamDown||0))); return (BEECH[p.beech].w==='beech'?(p.beech==='full'?'هيكل زان كامل':'هيكل زان'):'هيكل موسكي')+'، إسفنج كثافة '+FOAM[ft]+'، سوست زجزاج'; }
     function z(x){ var o=sn(x.core); if(x.surf!=='s_none') o+=' + '+sn(x.surf); if(x.paint&&x.paint!=='none') o+=' + '+sn(x.paint); return o; }
-    var a=z(p.car), b=z(p.fr); return a===b ? a : 'العلب '+a+'، والواجهات '+b+(p.fr.edge==='e_lip'?' وقواشيط زان':''); }
+    var a=z(p.car), b=z(p.fr); if(a===b) return a;
+    if(p.car.core===p.fr.core){ var f=function(x){ var o=[]; if(x.surf!=='s_none') o.push(sn(x.surf)); if(x.paint&&x.paint!=='none') o.push(sn(x.paint)); return o.join(' + ')||'خام'; };
+      return 'كله '+(p.car.core==='mdf'?'MDF تركي أو إسباني':sn(p.car.core))+' 18 مم: من جوه '+f(p.car)+'، ومن بره '+f(p.fr)+(p.fr.edge==='e_lip'?' وقواشيط زان':''); }
+    return 'العلب '+a+'، والواجهات '+b+(p.fr.edge==='e_lip'?' وقواشيط زان':''); }
   /* items: [{id, cfg}]; o: {to, home, needBy, extras:[names], note} */
   function msgShort(items,o){ o=o||{}; var L=[o.to||'السلام عليكم،'];
     L.push('بنجهز شقة'+(o.home?' في '+o.home:'')+' وعايزين عرض سعر مبدئي للعفش ده:'); if(o.note) L.push(o.note); L.push('');
     var mats={}; items.forEach(function(x){ var m=matShort(x.id,x.cfg), k=room(x.id).kind==='uph'?'u':'w'; (mats[k+m]=mats[k+m]||{k:k,m:m,n:[]}).n.push((x.name||room(x.id).n)); });
     var groups=Object.keys(mats).map(function(k){ return mats[k]; }), wg=groups.filter(function(g){ return g.k==='w'; }), ug=groups.filter(function(g){ return g.k==='u'; });
     items.forEach(function(x,i){ var m=matShort(x.id,x.cfg), k=room(x.id).kind==='uph'?'u':'w', own=(k==='w'?wg:ug).length>1;
-      L.push((i+1)+') '+(x.name||room(x.id).n)+': '+brief(x.id,x.cfg)+(own?' — '+m:'')); });
+      var rr=room(x.id), ish=(rr.idealShort && pz(x.cfg||{},rr).perRoom)?' ('+rr.idealShort+')':'';
+      L.push((i+1)+') '+(x.name||rr.n)+': '+brief(x.id,x.cfg)+ish+(own?' — '+m:'')); });
     (o.extras||[]).forEach(function(n,i){ L.push((items.length+i+1)+') '+n); });
     L.push('');
     if(wg.length===1) L.push('الخشب: '+wg[0].m+'، والرجول والكمر زان أحمر.');
+    if(items.some(function(x){ var r=room(x.id); return r.kind!=='uph' && pz(x.cfg||{},r).hingeT===2; })) L.push('المفصلات Blum Clip Top BLUMOTION، والمجاري Samet فتح كامل سوفت كلوز، ومن غير مقابض (مسكات مخفية)، والضهر 8 مم في مجرى.');
     if(ug.length===1) L.push('التنجيد: '+ug[0].m+'.');
     if(wg.length===1||ug.length===1) L.push('');
     L.push('محتاجين نعرف:');
@@ -990,14 +1081,14 @@ function catOf(id){ for(var i=0;i<CAT.length;i++) if(CAT[i].r.indexOf(id)>-1) re
 
 /* ---------- state ---------- */
 var DEF={msgKind:'short', home:'obour', car:0, persons:2, dayVal:0, fab:250, cur:'master', tab:'start', needBy:'', toName:'', planNote:'',
-  rooms:{master:{on:1,preset:8,t:1,lv:1,dims:{w:2,w2:1,bed:160,dresser:1,ceil:3,ns:0.5,dw:1.0},custom:null,quote:0,ch:{shape:'l',doors:'sglass',glass:'g_sec_tint',top:'ceil',shoes:'none'}}, dressing:{on:0,preset:4,t:1,lv:1,dims:{},custom:null,quote:0},
-    dining:{on:1,preset:8,t:1,lv:1,dims:{chairs:6,len:180,buffet:1,bw:1.2},custom:null,quote:0}, antreh:{on:1,preset:1,t:1,lv:1,dims:{seats:8,sl:2.2,sd:0.8,aw:0.95},custom:null,quote:0},
-    living:{on:1,preset:1,t:1,lv:1,dims:{seats:4,l1:2.4,l2:1.7,dp:0.9},custom:null,quote:0}, desk:{on:1,preset:8,t:1,lv:1,dims:{w:1.1,dp:0.55},custom:null,quote:0,ch:{place:'same',drawers:'1',shelves:'1'}}, kids:{on:0,preset:4,t:1,lv:1,dims:{},custom:null,quote:0},
-    tv:{on:1,preset:8,t:1,lv:1,dims:{w:1.9},custom:null,quote:0}, shoecab:{on:1,preset:8,t:1,lv:1,dims:{w:0.8,h:1},custom:null,quote:0,ch:{style:'flip'}},
-    coffee:{on:1,preset:8,t:1,lv:1,dims:{center:1,side:2,cl:1.2,cw:0.7,ss:0.45},custom:null,quote:0}, kitchen:{on:0,preset:0,t:1,lv:1,dims:{},custom:null,quote:0}},
+  rooms:{master:{on:1,preset:10,t:1,lv:1,dims:{w:2,w2:1,bed:160,dresser:1,ceil:3,ns:0.5,dw:1.0},custom:null,quote:0,ch:{shape:'l',doors:'sglass',glass:'g_sec_tint',top:'ceil',shoes:'none'}}, dressing:{on:0,preset:10,t:1,lv:1,dims:{},custom:null,quote:0},
+    dining:{on:1,preset:10,t:1,lv:1,dims:{chairs:6,len:180,buffet:1,bw:1.2},custom:null,quote:0}, antreh:{on:1,preset:3,t:1,lv:1,dims:{seats:8,sl:2.2,sd:0.8,aw:0.95},custom:null,quote:0},
+    living:{on:1,preset:3,t:1,lv:1,dims:{seats:4,l1:2.4,l2:1.7,dp:0.9},custom:null,quote:0}, desk:{on:1,preset:10,t:1,lv:1,dims:{w:1.1,dp:0.55},custom:null,quote:0,ch:{place:'same',drawers:'1',shelves:'1'}}, kids:{on:0,preset:10,t:1,lv:1,dims:{},custom:null,quote:0},
+    tv:{on:1,preset:10,t:1,lv:1,dims:{w:1.9},custom:null,quote:0}, shoecab:{on:1,preset:10,t:1,lv:1,dims:{w:0.8,h:1},custom:null,quote:0,ch:{style:'flip'}},
+    coffee:{on:1,preset:10,t:1,lv:1,dims:{center:1,side:2,cl:1.2,cw:0.7,ss:0.45},custom:null,quote:0}, kitchen:{on:0,preset:0,t:1,lv:1,dims:{},custom:null,quote:0}},
   quotes:null, extras:[]};
 var S=JSON.parse(JSON.stringify(DEF));
-var KEY='mizan-al-afsh-v1';
+var KEY='mizan-al-afsh-v2';
 try{ var raw=localStorage.getItem(KEY); if(raw){ var o=JSON.parse(raw); if(o&&typeof o==='object'){ Object.keys(DEF).forEach(function(k){ if(o[k]!=null) S[k]=o[k]; }); Object.keys(DEF.rooms).forEach(function(r){ S.rooms[r]=Object.assign({},DEF.rooms[r],(o.rooms||{})[r]||{}); }); } } }catch(e){}
 if(!Array.isArray(S.extras)) S.extras=[]; S.extras=S.extras.filter(function(x){ return x && typeof x.n==='string'; }).slice(0,30);
 if(!S.needBy){ var d=new Date(); d.setDate(d.getDate()+84); S.needBy=d.toISOString().slice(0,10); }
@@ -1257,7 +1348,7 @@ function render(){
     +'<div><span class="k">سعر ورشة عادل</span><span class="v teal">'+K(t.c*1.2,t.c*1.3)+'</span><span class="s">ده اللي تفاصل عليه</span></div>'
     +'<div><span class="k">سعر معرض معقول</span><span class="v beech">'+K(t.c*1.4,t.c*1.5)+'</span><span class="s">فوقه أنت بتدفع زيادة</span></div>'
     +'<div><span class="k">أنسب مكان ليكم</span><span class="v" style="font-family:var(--body);font-size:1.15rem;font-weight:700;direction:rtl;text-align:start">'+esc(w.pick.s.sh)+'</span><span class="s">بعد المواصلات والنقل</span></div>';
-  $('startNote').innerHTML='الأرقام دي للأوض المعلّم عليها بمواصفة «أحسن قيمة». غيّرها من <button type="button" class="linkbtn" data-go="rooms">الأوض والأسعار</button>، وشوف الحساب كله في <button type="button" class="linkbtn" data-go="where">منين نجيب؟</button>.'+(t.fab>0?' قماش التنجيد لوحده حوالي '+N(k1(t.fab))+'.':'');
+  $('startNote').innerHTML='الأرقام دي للأوض المعلّم عليها، كل أوضة بالمواصفة المختارة ليها (الافتراضي: المواصفة المثالية لكل قطعة). غيّرها من <button type="button" class="linkbtn" data-go="rooms">الأوض والأسعار</button>، وشوف الحساب كله في <button type="button" class="linkbtn" data-go="where">منين نجيب؟</button>.'+(t.fab>0?' قماش التنجيد لوحده حوالي '+N(k1(t.fab))+'.':'');
   $('dockIn').innerHTML='<span>التكلفة <b>'+N(k1(t.c))+'</b></span><span>ورشة عادل <b class="g">'+N(k1(t.c*1.2)+' – '+k1(t.c*1.3))+'</b></span><span>معرض <b class="w">'+N(k1(t.c*1.4)+' – '+k1(t.c*1.5))+'</b></span>';
   save();
 }
