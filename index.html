@@ -134,6 +134,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 select,input[type=number],input[type=text],input[type=date],textarea{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:7px 10px;min-width:0;width:100%}
 input[type=number]{font-family:var(--mono);direction:ltr;text-align:center}
 textarea{font-family:var(--body);line-height:1.7;resize:vertical}
+#planCode{font-family:var(--mono);font-size:.78rem;word-break:break-all}
 .seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--ink);border-radius:999px;overflow:hidden;align-self:flex-start}
 .seg button{background:transparent;border:0;padding:6px 14px;cursor:pointer;font-weight:600;font-size:.9rem}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
@@ -283,6 +284,50 @@ tr.grand .n{color:#fff}
   .tw td .n,.tw th .n{display:inline-block;direction:ltr;unicode-bidi:isolate}
   ul.tight a,#srcLinks a,.note a{overflow-wrap:anywhere;word-break:break-word}
 }
+
+/* offers received: side by side, then one review card each */
+.got{display:flex;flex-direction:column;gap:30px}
+table.vs td.lo{background:var(--good-soft);color:var(--good);font-weight:700}
+.offers{display:flex;flex-direction:column;gap:16px}
+details.offer{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+details.offer[open]{box-shadow:var(--shadow)}
+details.offer>summary{list-style:none;cursor:pointer;padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:center;position:relative}
+details.offer>summary::-webkit-details-marker{display:none}
+details.offer>summary::after{content:"";position:absolute;inset-inline-end:20px;top:24px;width:9px;height:9px;border-inline-end:2px solid var(--wine);border-bottom:2px solid var(--wine);transform:rotate(45deg);transition:transform .25s}
+details.offer[open]>summary::after{transform:rotate(225deg)}
+.offer .oh{display:flex;flex-direction:column;gap:4px;align-items:flex-start;min-width:0;padding-inline-end:22px}
+.offer .oh b{font-family:var(--ui);font-size:1.1rem}
+.offer .ot{display:flex;flex-direction:column;align-items:flex-end;gap:2px;text-align:end;padding-inline-end:26px}
+.offer .ot .n{font-size:1.5rem;font-weight:600;color:var(--wine)}
+.offer .ot small{font-size:.76rem;color:var(--muted)}
+.score{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border-top:1px dashed var(--line);padding-top:12px}
+.score > span{display:flex;flex-direction:column;gap:4px;font-family:var(--ui)}
+.score small{font-size:.74rem;color:var(--muted);font-weight:600}
+.score em{font-style:normal;font-size:.74rem;color:var(--ink)}
+.mt{display:flex;gap:3px}
+.mt i{flex:1;height:6px;border-radius:3px;background:var(--line);max-width:22px}
+.mt i.on{background:var(--wine)}
+.offer .ob{padding:4px 20px 22px;display:flex;flex-direction:column;gap:16px}
+.pc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.pc > div{border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.pc .pro{background:var(--good-soft)} .pc .pro h4{color:var(--good)}
+.pc .con{background:var(--bad-soft)} .pc .con h4{color:var(--bad)}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:12px}
+.pg{display:flex;flex-direction:column;gap:6px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;text-align:start;font-family:var(--ui);font-size:.76rem;color:var(--ink);transition:border-color .2s,transform .3s}
+.pg:hover{border-color:var(--wine);transform:translateY(-2px)}
+.pg img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:4px;display:block;background:#eee}
+dialog.lb{border:0;border-radius:12px;padding:14px;width:min(1100px,96vw);max-height:94vh;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+dialog.lb::backdrop{background:rgba(29,21,23,.72)}
+dialog.lb img{width:100%;height:auto;max-height:72vh;object-fit:contain;display:block;margin-block:10px;background:var(--soft);border-radius:6px}
+.lbh{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--ui);font-size:.86rem}
+@media (max-width:640px){
+  details.offer>summary{grid-template-columns:minmax(0,1fr);padding:16px}
+  .offer .ot{align-items:flex-start;text-align:start;padding-inline-end:0}
+  .score{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .offer .ob{padding:4px 14px 18px}
+  .tw table.vs td.lo{background:transparent}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
 </style>
 </head>
@@ -415,6 +460,12 @@ tr.grand .n{color:#fff}
     <h3>الطلب كله</h3>
     <div class="tw"><table id="allTable"></table></div>
     <div class="buylist" id="buyRooms" hidden></div>
+    <div class="panel" id="toPlan">
+      <h3>ابعت اختياراتكم لخطة Odysseus</h3>
+      <p class="small">الزرار بيعمل كود فيه كل القطع والمواصفات والمقاسات والاختيارات الجاهزة. الزقوه في تاب «الورشة» في الخطة، في «استورد من ميزان العفش».</p>
+      <div class="btns"><button type="button" class="btn" id="planCodeBtn">اعمل الكود وانسخه</button><span class="small muted" id="planCodeNote"></span></div>
+      <textarea id="planCode" rows="3" dir="ltr" readonly hidden aria-label="كود الخطة"></textarea>
+    </div>
     <p class="note">التكلفة = الخامات بهالك 15% + المصنعية + الدهان أو التنجيد + الإكسسوار + التركيب. سعر الورشة العادل = التكلفة × 1.2 لـ 1.3، والمعرض × 1.4 لـ 1.5. النقل من مكان بعيد محسوب في «منين نجيب؟». البنود اللي عليها «تقدير» أرقامها مش من سعر منشور.</p>
   </div>
 </section>
@@ -488,6 +539,8 @@ tr.grand .n{color:#fff}
       <h2>قارن العروض</h2>
       <p class="lede">حط كل عرض زي ما اتقالك. الموقع بيحسب هامش الورشة على التكلفة الحقيقية لنفس الأوض، ويزود المواصلات والنقل، ويرتب العروض. العروض بتتحفظ على الجهاز ده بس.</p>
     </header>
+    <div id="gotQuotes" class="got"></div>
+    <header><h3>ضيفوا أي عرض تاني وقارنوه</h3></header>
     <form class="panel" id="qForm">
       <div class="grid3">
         <div class="field"><label for="qName">اسم الورشة أو المعرض</label><input id="qName" type="text" required></div>
@@ -711,6 +764,8 @@ tr.grand .n{color:#fff}
 
 <div class="dock" id="dock"><div class="in" id="dockIn"></div></div>
 <div class="toast" id="toast" hidden></div>
+<dialog class="lb" id="pgDlg" aria-label="صفحات عرض وصل"><div class="lbh"><span id="pgCap"></span><button type="button" class="btn sm ghost" id="pgClose">اقفل</button></div><img id="pgImg" alt="صفحة من عرض وصل"><div class="btns" style="justify-content:space-between"><button type="button" class="btn sm" id="pgPrev">→ اللي قبلها</button><button type="button" class="btn sm" id="pgNext">اللي بعدها ←</button></div></dialog>
+
 
 <script>
 /* ===== Fair-furniture engine (shared by the public site and Plan Odysseus) =====
@@ -1243,7 +1298,7 @@ var DEF={readyPick:{}, msgKind:'short', home:'obour', car:0, persons:2, dayVal:0
     living:{on:1,preset:3,t:1,lv:1,dims:{seats:4,l1:2.4,l2:1.7,dp:0.9},custom:null,quote:0}, desk:{on:0,preset:10,t:1,lv:1,dims:{w:1.1,dp:0.55},custom:null,quote:0,ch:{place:'same',drawers:'1',shelves:'1'}}, kids:{on:0,preset:10,t:1,lv:1,dims:{},custom:null,quote:0},
     tv:{on:0,preset:10,t:1,lv:1,dims:{w:1.9},custom:null,quote:0}, shoecab:{on:0,preset:10,t:1,lv:1,dims:{w:0.8,h:1},custom:null,quote:0,ch:{style:'flip'}},
     coffee:{on:0,preset:10,t:1,lv:1,dims:{center:1,side:2,cl:1.2,cw:0.7,ss:0.45},custom:null,quote:0}, kitchen:{on:0,preset:0,t:1,lv:1,dims:{},custom:null,quote:0}},
-  quotes:null, extras:[]};
+  quotes:null, extras:[], gotWasl:0, gotAll:0};
 var S=JSON.parse(JSON.stringify(DEF));
 var KEY='mizan-al-afsh-v2';
 try{ var raw=localStorage.getItem(KEY); if(raw){ var o=JSON.parse(raw); if(o&&typeof o==='object'){ Object.keys(DEF).forEach(function(k){ if(o[k]!=null) S[k]=o[k]; }); Object.keys(DEF.rooms).forEach(function(r){ S.rooms[r]=Object.assign({},DEF.rooms[r],(o.rooms||{})[r]||{}); }); } } }catch(e){}
@@ -1253,6 +1308,117 @@ if(!Array.isArray(S.quotes)) S.quotes=[
   {ex:1,name:'مثال: ورشة في العبور',src:'local',price:262000,weeks:8,dep:40,war:1,spec:2,ship:1,rooms:['master','dining','antreh','living','tv']},
   {ex:1,name:'مثال: معرض في التجمع',src:'showroom',price:315000,weeks:4,dep:50,war:2,spec:1,ship:1,rooms:['master','dining','antreh','living','tv']},
   {ex:1,name:'مثال: ورشة عمولة في دمياط',src:'damietta',price:226000,weeks:10,dep:40,war:1,spec:2,ship:0,rooms:['master','dining','antreh','living','tv']}];
+/* ---------- quotes received: three offers, each reviewed (updated 17 Oct 2026 from Wasl's full 12-page proposal) ---------- */
+/* item: [room, price, what it covers, design page, price page]; covers:[rooms] = the price also covers those rooms */
+var GOT=[
+ {id:'wasl', name:'وصل (Wasl Artistic Tales)', kind:'ستوديو تصميم وتنفيذ', at:'15 أكتوبر 2026، العرض كامل 12 صفحة', fabric:'مش مكتوب', cls:'good', tag:'الأقرب لمواصفتكم', total:283000,
+  score:[3,5,3,1],
+  items:[['master',88500,'دولاب L 2 × 1 متر لحد السقف (300 سم) بوحدات فوق الضلف، ضلف سحب سيكوريت 6 مم مدخّن أو برونز، سرير 160 × 200، 2 كومود معلق 50 سم، تسريحة 100 سم. صورة السعر فيها كمان بنش آخر السرير بقلّاب للكعب ومراية منوّرة',5,11],
+    ['dining',44500,'ترابيزة 180 × 90 + 6 كراسي + بوفيه 120 (الرجول والكراسي زان سليم من غير فواصل، والقرصة 2K)',4,10],
+    ['antreh',55000,'المواصفات: 2 كنبة 3 مقاعد 220 × 80 + 2 فوتيه 95. بس صفحة الريسبشن مكتوب فيها ركنة L 220 × 170 + 2 فوتيه',2,8],
+    ['living',37500,'ركنة L 240 × 170، عمق 90، 4 مقاعد',3,9],
+    ['tv',18000,'وحدة 190 × 40 ارتفاع 45 معلقة + مكتبة جنبها 60 × 30 ارتفاع 240 بإضاءة',2,8],
+    ['desk',12000,'مكتب 110 × 55 ارتفاع 75 بوحدة أدراج ورفين حيطة (الصورة مكتب ركنة برفوف لحد السقف)',3,9],
+    ['shoecab',14000,'جزامة قلّاب + قعدة بضلفتين وإضاءة تحت. البديل: بنش بقعدة ودرج جزم 8,500',6,12],
+    ['coffee',13500,'ترابيزة وسط 8,500 (أو 6,500، أو المدورة بأدراج 9,400) + 2 ترابيزة جنب 45 × 45 متداخلين 5,000',2,8]],
+  spec:'المواصفات في العرض هي رسالتكم بالحرف تقريباً: كله «كونتر سي روسي» بقشرة طبيعية مكبوسة من جوه ومن بره + بولي يوريثان شفاف وقواشيط زان، والرجول والكمر زان أحمر. مفصلات Blum Clip Top BLUMOTION، مجاري Samet فتح كامل سوفت كلوز، مسكات مخفية، وضهر 8 مم في مجرى. السفرة والترابيزات: زان سليم من غير فواصل، نقر ولسان، والقرصة 2K. التنجيد: هيكل زان وأبلكاش 18 مم، سوست بوكت، إسفنج HR كثافة 40 وفايبر، وكسوة بتتفك وتتغسل.',
+  pros:['المواصفات المكتوبة هي مواصفتكم بند بند: Blum وSamet والمسكات المخفية والضهر 8 مم، والسفرة والترابيزات زان سليم من غير فواصل نقر ولسان وقرصة 2K.',
+    'القشرة الطبيعية من جوه ومن بره، وده أعلى من الميلامين اللي جوه في مواصفتكم.',
+    'التنجيد سوست بوكت وإسفنج HR كثافة 40 (أعلى من 35 اللي طالبينه) وكسوة بتتفك: نفس فكرة راحة KIVIK.',
+    'غرفة النوم 88,500 للتصميم الجديد كله (L لحد السقف وإزاز وتسريحة وكومود معلق)، أقل من آرت وود 100,000 للتصميم القديم الأصغر، وأقل من السعر العادل المحسوب.',
+    'السفرة 44,500 بالبوفيه، أقل من آرت وود بـ 25,500.',
+    'كل قطعة ليها صورة ومقاس من رسم الشقة، والعرض فيه إيميل وموقع وتليفون: سهل يتحول لملحق عقد.',
+    'البنش اللي في آخر السرير بقلّاب للكعب العالي ظاهر في صورة سعر أوضة النوم: بيحل مكان رف الكعب اللي ميرنا عايزاه.'],
+  cons:['مفيش ولا كلمة في الـ 12 صفحة عن الدفع ولا مدة التنفيذ ولا الضمان ولا النقل والتركيب ولا القماش.',
+    'الأسعار متحطة على صور مش على بنود، فمش واضح كل سعر شامل إيه: الإضاءة، الهيدبورد اللي على الحيطة كلها، البنش، المراية المنوّرة.',
+    'الانتريه متناقض: المواصفات بتقول 2 كنبة 3 مقاعد + 2 فوتيه، وصفحة الريسبشن بتقول ركنة L + 2 فوتيه، وصور السعر ركنة.',
+    'الكنب غالي: 92,500 للطقمين قصاد آرت وود 56,000 والمعرض 50,000 (من غير قماش). الليفنج لوحده 37,500 لـ 4 مقاعد.',
+    'القطع الصغيرة غالية قصاد الجاهز والمعرض: الجزامة 14,000 (المعرض 6,500)، التلفزيون 18,000 (جاهز 7,568)، المكتب 12,000 (جاهز 4,487). وصورهم أكبر من المواصفة.',
+    'الإزاز مدخّن أو برونز، مش الفلوتد العسلي اللي اخترتوه.',
+    '«كونتر سي روسي» مش جود وود اللي في رسالتكم. لازم يتأكد إنه ألواح 18 مم مصمتة.',
+    'ترابيزة السفرة في الصورة قاعدتها ألواح قشرة مش رجول زان، وفيه موديلين كراسي مختلفين.'],
+  ask:['الدفع كام مقدم وعلى أنهي مراحل؟ اطلبوا 40/40/20، والدفعة التانية بعد المعاينة على الأبيض، وغرامة تأخير',
+    'مدة التنفيذ بالأسابيع، والنقل والتركيب داخلين؟ والضمان كام سنة وعلى إيه؟',
+    'القماش داخل في سعر الكنب وكراسي السفرة؟ نوعه إيه وسعر المتر كام؟',
+    'الانتريه 55,000: 2 كنبة 3 مقاعد + 2 فوتيه (8 مقاعد) زي المواصفات، ولا ركنة L + 2 فوتيه زي صفحة الريسبشن؟',
+    'أوضة النوم 88,500 شاملة البنش والهيدبورد بعرض الحيطة والإضاءة والمراية المنوّرة؟ والسرير بملل ولا سحارة؟',
+    'سعر الضلف بإزاز فلوتد عسلي بدل المدخّن، وماركة مجرى الضلف السحب (Blum Clip Top للمفصلات بس)',
+    '«كونتر سي روسي» سمكه 18 مم ودرجته إيه؟ ألواح مصمتة، مش قشرة 3 مم على برواز',
+    'لون القشرة لكل أوضة (الصور فيها جوز غامق وبلوط فاتح) وعينة قبل التنفيذ، وأنهي موديل كرسي',
+    'التلفزيون 18,000 بالمكتبة 240، والمكتب 12,000: كام من غير المكتبة والرفوف للسقف؟ والجزامة بمقاس 80 × 35 × 100 بس كام؟'],
+  verdict:'أقرب عرض لمواصفتكم، وأوضة النوم والسفرة سعرهم كويس جداً. الضعف في الكنب (غالي) والقطع الصغيرة (أغلى من الجاهز بالضعف)، وفي إن الشروط مش مكتوبة خالص. اتفقوا معاهم على الكبير، وفاصلوا في الكنب بأرقام المعرض وآرت وود.'},
+ {id:'showroom', name:'المعرض (عرض 15 أكتوبر)', kind:'معرض', at:'15 أكتوبر 2026، رسالة واتساب', fabric:'السفرة شامل القماش، الكنب من غيره', cls:'warn', tag:'الأرخص، بمواصفة أخف',
+  score:[5,2,2,3],
+  items:[['master',60000,'مكتوب 6,000 وأكيد قصدهم 60,000. محتوى الأوضة مش مكتوب'],
+    ['dining',35000,'سفرة، شامل قماش الكراسي'],
+    ['antreh',28000,'انتريه من غير قماش، عدد القطع مش مكتوب'],
+    ['living',22000,'كنبة الليفنج حرف L من غير قماش'],
+    ['tv',6000,'«خامة طبيعية بدون MDF … 6,000»: القطعة مش مكتوبة، غالباً وحدة التلفزيون'],
+    ['desk',5500,'«مكتبة الليفنج»: مكتب ولا مكتبة؟'],
+    ['shoecab',6500,'جزامة'],
+    ['coffee',8000,'ترابيزة وسط + 2 جنب']],
+  spec:'الدواليب: برواز خشب سويدي مكسي أبلكاش روسي 3 مم (حشو، من غير MDF)، زان أحمر روماني في القواشيط والتجميع، وقشرة طبيعية. مفصلات وسحابات سوفت كلوز «اتحاد أوروبي» من غير ماركة، ومقابض إيطالي. الدهان بوليستر أو دوكو فرن كبسي. مكانيزم سرير تركي، وإزاز 6 مم. السفرة: الرجول والكراسي زان أحمر روماني. الكنب: هيكل زان أحمر 5 × 4 و5 × 6 سم، إسفنج كثافة 36، أستك أصفر مستورد وسوست زجزاج. القماش من نجيب سليم.',
+  pros:['أرخص عرض بفرق كبير: حوالي 171,000 لكل القطع.',
+    'مافيش MDF خالص، وزان أحمر روماني في التجميع والقواطيش ورجول السفرة والكراسي.',
+    'هيكل الكنب زان أحمر كامل 5 × 4 و5 × 6 سم، وده أقوى من الأبلكاش في الحشو.',
+    'دوكو فرن من كبسي (اسم معروف)، ومكانيزم سرير تركي، وقماش نجيب سليم.',
+    'المدة مكتوبة (شهرين ونص من التعاقد)، وفيه تيم بيراجع المقاسات.',
+    'الجزامة 6,500 والترابيزات 8,000 أرخص من الجاهز وبخشب طبيعي.'],
+  cons:['طريقة التصنيع أخف: برواز خشب سويدي مكسي أبلكاش 3 مم. خفيف وثابت، بس بيتعلّم من الخبط، والمفصلات والمجاري لازم تتركب في خشب مصمت.',
+    'غرفة النوم مكتوب سعرها 6,000 ومش مكتوب فيها إيه. لو هي 60,000 فدي نص السعر العادل لتصميمكم، فغالباً ناقص منها حاجات (الوحدات للسقف، الإزاز، التسريحة).',
+    'التنجيد سوست زجزاج وإسفنج 36 مش HR، من غير سوست بوكت ولا كسوة بتتفك: أقل راحة من KIVIK.',
+    'المفصلات والمجاري «اتحاد أوروبي» من غير ماركة، والمقابض ظاهرة مش مخفية.',
+    'دهان البوليستر اللامع بيشرخ ويصفّر مع الوقت، والإزاز سادة مش فلوتد.',
+    'المقدم 50%، ومفيش ضمان ولا نقل وتركيب مكتوبين.',
+    'فيه قطعة بـ 6,000 مش معروفة هي إيه، و«مكتبة» مش واضحة.'],
+  ask:['غرفة النوم 60,000 مش 6,000؟ وشاملة: دولاب L 2 × 1 بوحدات لحد السقف (3 متر)، ضلف سحب فلوتد عسلي، سرير 160 بسحارة، تسريحة 100، كومود معلق؟',
+    'الـ 6,000 «خامة طبيعية» لأنهي قطعة؟ و«مكتبة الليفنج» مكتب ولا مكتبة، ومقاسها كام؟',
+    'البرواز السويدي العيدان كل كام سم؟ والضهر والرفوف سمكهم كام؟ والمفصلات متركبة في خشب مصمت؟',
+    'ماركة المفصلات والمجاري بالاسم',
+    'ينفع PU بدل البوليستر، ومسكات مخفية بدل المقابض؟',
+    'الإسفنج HR؟ وكام زيادة لسوست بوكت وكسوة بتتفك؟',
+    'النقل والتركيب والضمان، والدفع 40/40/20 بدل 50%'],
+  verdict:'أرخص بكتير، بس مش نفس المواصفة: الدواليب حشو 3 مم، والكنب زجزاج من غير بوكت، والإكسسوار من غير ماركة، وأوضة النوم مش واضحة. مفيد كورقة تفاوض مع وصل في الكنب، وممكن تاخدوا منه الجزامة والترابيزات.'},
+ {id:'artwood', name:'آرت وود (Art Wood)', kind:'ورشة في العبور', at:'13 أكتوبر 2026', fabric:'الكنب من غير قماش', cls:'warn', tag:'قريب منكم، بس على التصميم القديم',
+  score:[2,2,2,1],
+  items:[['master',100000,'التصميم القديم: دولاب مستقيم 220، سرير 180، 2 كومود، «طبيعي». البديل ميلامين مستورد 90,000'],
+    ['dining',70000,'سفرة «طبيعي»'],
+    ['antreh',56000,'طقمين كنب (كنبة كبيرة + 2 فوتيه لكل طقم)، 10 مقاعد، من غير قماش. للانتريه والليفنج مع بعض',0,0,['living']]],
+  spec:'«طبيعي» من غير تفاصيل مكتوبة للخشب ولا للدهان ولا للإكسسوار. الطقمين من غير قماش.',
+  pros:['ورشة في العبور: تقدروا تعدّوا عليها من غير ميعاد وتتابعوا كل مرحلة بنفسكم.',
+    'الطقمين 56,000 لـ 10 مقاعد من غير قماش: سعر ورشة عادل لو الهيكل زان كامل والإسفنج 35.',
+    'فيه بديل ميلامين مستورد بسعر مكتوب.'],
+  cons:['متسعّر على التصميم القديم (دولاب مستقيم 220 وسرير 180)، فمايتقارنش بالتصميم الجديد.',
+    'غرفة النوم 100,000 حوالي +40% فوق تكلفة نفس التصميم، والميلامين 90,000 غالي (+73%).',
+    'السفرة 70,000 أغلى عرض: وصل 44,500 بالبوفيه، والمعرض 35,000 بالقماش.',
+    '«طبيعي» من غير ما تتكتب الخامة: كونتر إيه، قشرة إيه، دهان إيه، مفصلات إيه.',
+    'مفيش سعر للتلفزيون والمكتب والجزامة والترابيزات، ولا شروط دفع أو تسليم.',
+    'مفيش سوست بوكت ولا كسوة بتتفك في العرض.'],
+  ask:['ابعتولهم المواصفة التفصيلية الجديدة (من «المواصفة والرسالة») واطلبوا سعر كل قطعة بيها',
+    'الطقمين: هيكل زان كامل؟ الإسفنج كثافته كام؟ وكام لو سوست بوكت وكسوة بتتفك؟',
+    'السفرة: ورّوهم سعر وصل 44,500 بالبوفيه واسألوهم يقدروا ينزلوا لحد فين',
+    'الدفع والمدة والضمان والنقل والتركيب'],
+  verdict:'قريب منكم، والكنب سعره معقول، بس العرض قديم والسفرة أغلى من الكل. ابعتولهم المواصفة الجديدة واطلبوا يسعّروها، وورّوهم أرقام وصل في السفرة.'}];
+var GOT_PAGES=['الغلاف','الريسبشن والتلفزيون والترابيزات','الليفنج والمكتب والترابيزات','السفرة','أوضة النوم','جزامة المدخل','المواصفات المطلوبة','الأسعار: الانتريه والتلفزيون والترابيزات','الأسعار: الليفنج والمكتب والترابيزات','الأسعار: السفرة','الأسعار: أوضة النوم','الأسعار: الجزامة'];
+/* my pick per piece: [offer id or 'ready', price, why] */
+var GOT_PICK={master:['wasl',88500,'أقرب للتصميم والمواصفة، وأرخص من السعر العادل'],
+  dining:['wasl',44500,'زان سليم و2K وبوفيه. المعرض أرخص بس القرصة حشو'],
+  antreh:['wasl',55000,'بعد ما يأكدوا 8 مقاعد'],
+  living:['wasl',30000,'فاصلوا من 37,500 لحد حوالي 30,000'],
+  tv:['ready',7568,'جاهز من Homzmart'],
+  desk:['ready',4487,'جاهز من Deskmart'],
+  shoecab:['showroom',6500,'خشب طبيعي وأرخص من الجاهز'],
+  coffee:['showroom',8000,'أرخص من الجاهز الزان']};
+function gotItem(g,id){ for(var i=0;i<g.items.length;i++){ var x=g.items[i]; if(x[0]===id) return {x:x}; if(x[5]&&x[5].indexOf(id)>-1) return {x:x,cov:1}; } return null; }
+if(!S.gotAll && GOT[2]){ [['showroom',GOT[1],'showroom',10,50,0,1],['artwood',GOT[2],'local',8,40,0,1]].forEach(function(a){
+    if(S.quotes.some(function(q){ return q.id===a[0]; })) return; var g=a[1], tot=g.items.reduce(function(s,x){ return s+x[1]; },0), rooms=[];
+    g.items.forEach(function(x){ rooms.push(x[0]); (x[5]||[]).forEach(function(r){ rooms.push(r); }); });
+    S.quotes.push({id:a[0], name:g.name, src:a[2], price:tot, weeks:a[3], dep:a[4], war:0, spec:a[6], ship:a[5], rooms:rooms}); });
+  S.gotAll=1; }
+if(!S.gotWasl && GOT[0]){ var gw=GOT[0];
+  S.quotes.unshift({id:'wasl', name:gw.name, src:'local', price:gw.total, weeks:8, dep:40, war:1, spec:2, ship:0, rooms:gw.items.map(function(x){ return x[0]; })});
+  gw.items.forEach(function(x){ var r=S.rooms[x[0]]; if(r && !(r.quote>0)) r.quote=x[1]; });
+  S.gotWasl=1; }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
 
 /* ---------- math for the order ---------- */
@@ -1475,6 +1641,60 @@ function paintCompare(){
   $('qRec').innerHTML=h;
 }
 
+var SC_N=['السعر','المواصفة','الوضوح','الشروط'], SC_W=['','ضعيف','أقل من المتوسط','متوسط','كويس','ممتاز'];
+function meter(v){ var o=''; for(var i=1;i<=5;i++) o+='<i'+(i<=v?' class="on"':'')+'></i>'; return '<span class="mt" aria-hidden="true">'+o+'</span>'; }
+function pgBtn(n,label){ return n?'<button type="button" class="linkbtn small" data-pg="'+n+'">'+esc(label)+'</button>':''; }
+function paintGot(){
+  if(!GOT.length){ $('gotQuotes').hidden=true; return; }
+  var ROWS=['master','dining','antreh','living','tv','desk','shoecab','coffee'], H='';
+  /* 1. side by side */
+  var tot={}, mix=0, mixList=[]; GOT.forEach(function(g){ tot[g.id]=0; });
+  var body=ROWS.map(function(id){ var r=E.room(id), c=roomCost(id).c, R=E.READY[id], vals=[];
+    var cells=GOT.map(function(g){ var it=gotItem(g,id); if(!it) return '<td class="num muted">—</td>'; if(it.cov) return '<td class="num small muted">ضمن الطقمين</td>';
+      tot[g.id]+=it.x[1]; vals.push(it.x[1]); return '<td class="num" data-v="'+it.x[1]+'">'+N(n0(it.x[1]))+'</td>'; }).join('');
+    var mn=Math.min.apply(null,vals.concat(R?[R.pick.p]:[]));
+    cells=cells.replace('class="num" data-v="'+mn+'"','class="num lo"');
+    var pk=GOT_PICK[id], pkName=pk[0]==='ready'?'جاهز':GOT.filter(function(g){ return g.id===pk[0]; })[0].name.split(' (')[0];
+    mix+=pk[1];
+    return '<tr><th><button type="button" class="linkbtn" data-room="'+id+'">'+esc(r.n)+'</button></th>'+cells
+      +'<td class="num">'+(R?N(n0(R.pick.p))+'<br><span class="small muted">'+esc(R.pick.s)+'</span>':'—')+'</td>'
+      +'<td class="num">'+N(k1(c*1.2)+' – '+k1(c*1.3))+(r.kind==='uph'?'<br><span class="small muted">من غير قماش</span>':'')+'</td>'
+      +'<td><b>'+esc(pkName)+'</b> <span class="n">'+n0(pk[1])+'</span><br><span class="small muted">'+esc(pk[2])+'</span></td></tr>'; }).join('');
+  var fab=order(['antreh','living']).fab;
+  H+='<section class="sec"><header><p class="eyebrow">العروض اللي وصلت</p><h3>تلات عروض قصاد بعض</h3><p class="note">كل رقم زي ما اتكتب في العرض. الأرخص في كل سطر عليه خلفية خضرا، بس الأرخص مش دايماً نفس المواصفة: اقروا رأيي في كل عرض تحت.</p></header>'
+    +'<div class="tw"><table class="vs"><thead><tr><th>القطعة</th>'+GOT.map(function(g){ return '<th class="num">'+esc(g.name.split(' (')[0])+'</th>'; }).join('')+'<th class="num">أحسن جاهز</th><th class="num">ورشة عادل بمواصفتكم</th><th>اختياري</th></tr></thead><tbody>'+body
+    +'<tr class="tot"><th>اللي متسعّر</th>'+GOT.map(function(g){ return '<td class="num">'+N(n0(tot[g.id]))+'</td>'; }).join('')+'<td class="num x">—</td><td class="num x">—</td><td><b>المزيج ده</b> <span class="n">'+n0(mix)+'</span></td></tr></tbody></table></div>'
+    +'<div class="verdict good"><strong>الخلاصة: وصل للحاجات الكبيرة، والصغيرة من برا.</strong> أوضة النوم والسفرة والطقمين من وصل بعد ما تفاصلوا في الليفنج، والتلفزيون والمكتب جاهزين، والجزامة والترابيزات من المعرض. كده الإجمالي حوالي '+N(k1(mix))+' بدل '+N(n0(GOT[0].total))+' لو كله من وصل'+(fab>0?'، وقماش الكنب حوالي '+N(k1(fab))+' لو مش داخل':'')+'. وقبل أي دفع: الشروط مكتوبة، والمعاينة على الأبيض.</div>'
+    +'<p class="small">نفس الحاجات الكبيرة (أوضة النوم والسفرة والكنب): وصل '+N('225,500')+' لـ 12 مقعد بسوست بوكت، والمعرض حوالي '+N('145,000')+' + قماش الكنب بمواصفة أخف، وآرت وود '+N('226,000')+' + قماش للتصميم القديم و10 مقاعد.</p></section>';
+  /* 2. one review per offer */
+  H+='<section class="sec"><header><h3>رأيي في كل عرض</h3><p class="note">التقييم من 5 على أربع حاجات: السعر قصاد السعر العادل، والمواصفة قصاد اللي طالبينه، ووضوح العرض، والشروط المكتوبة (دفع ومدة وضمان ونقل).</p></header><div class="offers">';
+  H+=GOT.map(function(g,gi){ var tq=0, tc=0;
+    var rows=g.items.map(function(x){ var r=E.room(x[0]), ids=[x[0]].concat(x[5]||[]), c=0; ids.forEach(function(id){ c+=roomCost(id).c; }); var v=E.verdict(x[1],c), m=Math.round(v.m*100); tq+=x[1]; tc+=c;
+      return '<tr><th><button type="button" class="linkbtn" data-room="'+x[0]+'">'+esc(r.n)+(x[5]?' + '+esc(E.room(x[5][0]).n):'')+'</button><br><span class="small muted">'+esc(x[2])+'</span>'+(x[3]?'<br>'+pgBtn(x[3],'شوف الصورة')+' · '+pgBtn(x[4],'شوف السعر'):'')+'</th><td class="num">'+N(n0(x[1]))+'</td><td class="num">'+N(k1(c*1.2)+' – '+k1(c*1.3))+(r.kind==='uph'?'<br><span class="small muted">من غير قماش</span>':'')+'</td><td class="num">'+N((m>=0?'+':'−')+Math.abs(m)+'%')+'<br><span class="pill '+v.cls+'">'+v.t+'</span></td></tr>'; }).join('');
+    var vt=E.verdict(tq,tc), mt=Math.round(vt.m*100);
+    var gal=g.id==='wasl' ? '<div class="sec"><h4>العرض كامل</h4><div class="gal">'+GOT_PAGES.map(function(t,i){ var n=i+1, f=(n<10?'0':'')+n; return '<button type="button" class="pg" data-pg="'+n+'"><img src="wasl/t'+f+'.jpg" alt="" loading="lazy" width="520" height="293"><span>'+n+'. '+esc(t)+'</span></button>'; }).join('')+'</div><p class="small"><a href="wasl/wasl-proposal.pdf" target="_blank" rel="noopener">افتح الـ PDF الأصلي</a></p></div>' : '';
+    return '<details class="offer"'+(gi===0?' open':'')+'><summary><span class="oh"><span class="eyebrow">'+esc(g.kind)+' · '+esc(g.at)+'</span><b>'+esc(g.name)+'</b><span class="pill '+g.cls+'">'+esc(g.tag)+'</span></span><span class="ot"><span class="n">'+n0(tq)+'</span><small>'+g.items.length+' بنود · القماش: '+esc(g.fabric)+'</small></span>'
+      +'<span class="score">'+g.score.map(function(v,i){ return '<span><small>'+SC_N[i]+'</small>'+meter(v)+'<em>'+SC_W[v]+'</em></span>'; }).join('')+'</span></summary><div class="ob">'
+      +'<div class="verdict '+g.cls+'"><strong>رأيي:</strong> '+esc(g.verdict)+'</div>'
+      +'<div class="pc"><div class="pro"><h4>المميزات</h4><ul class="tight small">'+g.pros.map(function(a){ return '<li>'+esc(a)+'</li>'; }).join('')+'</ul></div><div class="con"><h4>العيوب</h4><ul class="tight small">'+g.cons.map(function(a){ return '<li>'+esc(a)+'</li>'; }).join('')+'</ul></div></div>'
+      +'<div class="tw"><table><thead><tr><th>القطعة</th><th class="num">سعرهم</th><th class="num">ورشة عادل بمواصفتكم</th><th class="num">الهامش والحكم</th></tr></thead><tbody>'+rows
+      +'<tr class="tot"><th>الإجمالي</th><td class="num">'+N(n0(tq))+'</td><td class="num">'+N(k1(tc*1.2)+' – '+k1(tc*1.3))+'</td><td class="num">'+N((mt>=0?'+':'−')+Math.abs(mt)+'%')+'<br><span class="pill '+vt.cls+'">'+vt.t+'</span></td></tr></tbody></table></div>'
+      +'<p class="small"><b>المواصفة في العرض:</b> '+esc(g.spec)+'</p>'
+      +'<div><h4>اسألوهم قبل التوقيع</h4><ul class="tight small">'+g.ask.map(function(a){ return '<li>'+esc(a)+'</li>'; }).join('')+'</ul></div>'+gal+'</div></details>'; }).join('');
+  H+='</div><p class="note">الهامش محسوب على المواصفة اللي مختارينها في الحاسبة (ألواح جود وود 18 مم). المعرض بيشتغل حشو سويدي وأبلكاش 3 مم، وده أرخص في الخامة، فهامشه الحقيقي أعلى من اللي مكتوب. وآرت وود متسعّر على تصميم أصغر. عروض المعرض وآرت وود اتضافت كمان في جدول المقارنة تحت بمدة ومقدم تقريبي لحد ما يتأكدوا.</p></section>';
+  $('gotQuotes').innerHTML=H;
+}
+/* lightbox for the proposal pages */
+(function(){ var dl=$('pgDlg'), cur=1;
+  function show(n){ cur=Math.min(12,Math.max(1,n)); var f=(cur<10?'0':'')+cur; $('pgImg').src='wasl/p'+f+'.jpg'; $('pgCap').textContent=cur+' من 12: '+GOT_PAGES[cur-1];
+    if(!dl.open){ try{ dl.showModal(); }catch(e){ dl.setAttribute('open',''); } } }
+  document.addEventListener('click', function(e){ var b=e.target.closest('[data-pg]'); if(!b) return; e.preventDefault(); show(+b.dataset.pg); });
+  $('pgPrev').addEventListener('click', function(){ show(cur-1); }); $('pgNext').addEventListener('click', function(){ show(cur+1); });
+  $('pgClose').addEventListener('click', function(){ try{ dl.close(); }catch(e){ dl.removeAttribute('open'); } });
+  dl.addEventListener('click', function(e){ if(e.target===dl){ try{ dl.close(); }catch(x){ dl.removeAttribute('open'); } } });
+  dl.addEventListener('keydown', function(e){ if(e.key==='ArrowLeft') show(cur+1); if(e.key==='ArrowRight') show(cur-1); });
+})();
+
 /* ---------- static tables from the catalogue ---------- */
 function priceCell(k){ var p=E.P[k]; return N(n0(p.p[0])+' – '+n0(p.p[2]))+(p.est?'<span class="est">تقدير</span>':''); }
 $('kontrRows').innerHTML=[['k_good','علب المطابخ والدواليب، أي حاجة هتشيل','أغلى؛ اتأكد من الختم على اللوح'],['k_obour','علب الدواليب والمطابخ بسعر أقل من جود وود','نفس الكلام: اطلب الختم والفاتورة'],['k_kabs','الضلف والعلب اللي هتتقشر وتتدهن: أتقل وأثبت','اتأكد إن قلبه مليان'],['k_aro','الدواليب العادية والبوفيه','أخف من الكبس، والرف الطويل محتاج تقوية'],['k_imp','مش منصوح بيه','فراغات في القلب، رطوبة، والمسمار مايمسكش']].map(function(x){ return '<tr><th>'+esc(E.P[x[0]].n)+'</th><td class="num">'+priceCell(x[0])+'</td><td>'+esc(x[1])+'</td><td>'+esc(x[2])+'</td></tr>'; }).join('');
@@ -1570,6 +1790,17 @@ function paintStartReady(){ var R=readySaving(), el=$('startReady'); if(!el) ret
   el.innerHTML='<div><h3>مش كل حاجة محتاجة نجار</h3><p>'+R.items.length+' قطع تتجاب جاهزة بخامة كويسة: '+R.items.map(function(x){ return E.room(x.id).n; }).join('، ')+'.</p></div><div class="big">−'+k1(R.tot)+'</div>'
     +'<div class="chips">'+R.items.map(function(x){ var pk=E.READY[x.id].pick; return '<button type="button" class="chip" data-tile="'+x.id+'">'+esc(E.room(x.id).n)+': '+esc(pk.s)+' '+n0(pk.p)+'</button>'; }).join('')+'</div>';
 }
+
+/* ---------- export to Plan Odysseus ---------- */
+function planCode(){ var out={v:1, at:new Date().toISOString().slice(0,10), home:S.home, car:S.car?1:0, persons:S.persons, rooms:{}, extras:S.extras.map(function(x){ return {n:x.n, a:x.a}; })};
+  E.ROOMS.forEach(function(r){ var st=S.rooms[r.id], o={on:st.on?1:0, preset:st.preset|0, t:st.t|0, dims:st.dims||{}, ch:st.ch||{}, quote:st.quote||0};
+    if(!st.on && E.READY[r.id]){ var R=E.READY[r.id], i=Math.min(R.opts.length-1,(S.readyPick||{})[r.id]|0), op=R.opts[i]; o.ready={p:op.p, s:op.s, n:op.n}; }
+    if(r.id==='kitchen' && st.on) o.fair=Math.round(roomCost('kitchen').c*1.25/100)*100;
+    out.rooms[r.id]=o; });
+  var j=JSON.stringify(out); return 'MZ1.'+btoa(unescape(encodeURIComponent(j))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+$('planCodeBtn').addEventListener('click', function(){ var c=planCode(), ta=$('planCode'); ta.hidden=false; ta.value=c;
+  var ok=function(){ $('planCodeNote').textContent='اتنسخ. الزقه في تاب الورشة في الخطة.'; toast('اتنسخ الكود'); }, fb=function(){ ta.focus(); ta.select(); $('planCodeNote').textContent='الكود متعلّم: انسخه بإيدك.'; };
+  try{ navigator.clipboard.writeText(c).then(ok, fb); }catch(e){ fb(); } });
 /* label every table cell with its column header, so the phone layout can show it */
 function labelTables(root){ (root||document).querySelectorAll('.tw table').forEach(function(t){ var hs=t.querySelectorAll('thead th'); if(!hs.length) return;
   var names=[].map.call(hs,function(h){ return h.textContent.trim(); });
@@ -1580,7 +1811,7 @@ function render(){
   if(document.activeElement!==$('persons')) $('persons').value=S.persons; if(document.activeElement!==$('persons2')) $('persons2').value=S.persons;
   if(document.activeElement!==$('dayVal')) $('dayVal').value=S.dayVal;
   ['needBy','toName','planNote'].forEach(function(id){ if(document.activeElement!==$(id)) $(id).value=S[id]||''; });
-  var t=paintAll(); paintRoom(); paintReady(); paintIkea(); paintStartReady(); var w=paintWhere(); paintAsk(); paintCompare(); paintTiles(); paintIkeaTable();
+  var t=paintAll(); paintRoom(); paintReady(); paintIkea(); paintStartReady(); var w=paintWhere(); paintAsk(); paintCompare(); paintGot(); paintTiles(); paintIkeaTable();
   $('heroFair').textContent=k1(t.c*1.2+t.ready)+' – '+k1(t.c*1.3+t.ready); var bl=$('buyStart'); if(bl){ var h=buyListHtml('start'); bl.hidden=!h; bl.innerHTML=h?'<header><p class="eyebrow">قايمة الشرا</p><h3>اللي هتجيبوه جاهز، ومنين</h3><p class="note">لكل قطعة أكتر من اختيار بلينك. اختاروا واحد، والإجمالي فوق بيتحسب بيه.</p></header>'+h:''; } var bl2=$('buyRooms'); if(bl2){ var h2=buyListHtml('rooms'); bl2.hidden=!h2; bl2.innerHTML=h2?'<h3>اللي هتجيبوه جاهز</h3>'+h2:''; }
   $('startSum').innerHTML='<div><span class="k">تفصيل عند الورشة</span><span class="v">'+K(t.c*1.2,t.c*1.3)+'</span><span class="s">'+onRooms().length+' قطع، سعر ورشة عادل (التكلفة '+k1(t.c)+')</span></div>'
     +'<div><span class="k">جاهز من برا</span><span class="v">'+(t.ready>0?K(t.ready):'<span class="n">0</span>')+'</span><span class="s">'+(t.nReady?t.nReady+' قطع بالاختيارات اللي تحت':'مفيش قطع جاهزة لسه')+'</span></div>'
